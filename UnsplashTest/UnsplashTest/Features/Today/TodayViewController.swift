@@ -10,6 +10,16 @@ import UIKit
 final class TodayViewController: UIViewController {
 
     private lazy var photosCollectionView = self.createCollectionView()
+    private let viewModel: TodayViewModel
+
+    init(viewModel: TodayViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +29,10 @@ final class TodayViewController: UIViewController {
     }
 
     private func setupCollectionView() {
+        self.photosCollectionView.dataSource = self
+        self.photosCollectionView.delegate = self
         self.photosCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        
         self.view.addSubview(self.photosCollectionView)
         NSLayoutConstraint.activate([
             self.photosCollectionView.topAnchor.constraint(equalTo: self.view.topAnchor),
@@ -33,9 +46,12 @@ final class TodayViewController: UIViewController {
 // MARK: - Collection view data source
 extension TodayViewController: UICollectionViewDataSource {
 
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // TODO: To implement
-        0
+    func collectionView(_ _: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        self.viewModel.numberOfItemsIn(section)
+    }
+
+    func numberOfSections(in _: UICollectionView) -> Int {
+        self.viewModel.numberOfSections
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
