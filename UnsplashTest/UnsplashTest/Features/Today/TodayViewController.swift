@@ -31,6 +31,11 @@ final class TodayViewController: UIViewController {
     private func setupCollectionView() {
         self.photosCollectionView.dataSource = self
         self.photosCollectionView.delegate = self
+        self.photosCollectionView.register(
+            TodayCollectionViewHeaderSectionSupplementaryView.self,
+            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+            withReuseIdentifier: TodayCollectionViewHeaderSectionSupplementaryView.reuseIdentifier
+        )
         self.photosCollectionView.translatesAutoresizingMaskIntoConstraints = false
         
         self.view.addSubview(self.photosCollectionView)
@@ -57,6 +62,24 @@ extension TodayViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         // TODO: To implement
         fatalError()
+    }
+
+    func collectionView(
+        _ collectionView: UICollectionView,
+        viewForSupplementaryElementOfKind kind: String,
+        at indexPath: IndexPath
+    ) -> UICollectionReusableView {
+        guard kind == UICollectionView.elementKindSectionHeader else {
+            return UICollectionReusableView()
+        }
+        let headerView = collectionView.dequeueReusableSupplementaryView(
+            ofKind: kind,
+            for: indexPath,
+            viewType: TodayCollectionViewHeaderSectionSupplementaryView.self
+        )
+        let headerViewModel = self.viewModel.headerViewModel
+        headerView.fill(with: headerViewModel)
+        return headerView
     }
 }
 

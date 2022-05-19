@@ -18,7 +18,8 @@ final class TodayNavigationCoordinator: NavigationCoordinator {
     }
 
     func start() {
-        let todayViewController = TodayViewController()
+        let todayViewModel = TodayViewModel()
+        let todayViewController = TodayViewController(viewModel: todayViewModel)
         navigationController.setViewControllers([todayViewController], animated: true)
     }
 }

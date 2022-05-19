@@ -9,6 +9,7 @@ import Foundation
 
 final class TodayViewModel: TableOrCollectionViewModel {
     private(set) var viewableList: [PhotoViewModel]
+    let headerViewModel = TodayCollectionViewHeaderSectionSupplementaryViewModel()
 
     init() {
         self.viewableList = []

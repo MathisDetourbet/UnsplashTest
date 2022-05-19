@@ -35,7 +35,7 @@ final class RootCoordinator: TabBarCoordinator {
 private extension RootCoordinator {
 
     private func startTodayTab() {
-        let navigationController = UINavigationController(rootViewController: TodayViewController())
+        let navigationController = UINavigationController()
         let todayCoordinator = TodayNavigationCoordinator(navigationController: navigationController)
 
         guard let todayViewController = todayCoordinator.currentViewController else {
