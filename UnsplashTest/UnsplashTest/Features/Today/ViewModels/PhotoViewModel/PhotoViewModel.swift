@@ -5,8 +5,13 @@
 //  Created by Mathis DETOURBET on 19/05/2022.
 //
 
-import Foundation
+import UIKit
+import Combine
 
-final class PhotoViewModel {
-    // TODO: To implement
+struct PhotoViewModel: PhotoCellViewModelable {
+    let backgroundImage: AnyPublisher<UIImage?, Never>
+    let description: String?
+    let userImage: AnyPublisher<UIImage?, Never>
+    let username: String
+    let likesCountString: String
 }
