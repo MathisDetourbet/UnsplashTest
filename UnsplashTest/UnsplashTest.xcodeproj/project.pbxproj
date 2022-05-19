@@ -13,6 +13,10 @@
 		667CCBE528363EE90013879A /* UnsplashTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667CCBE428363EE90013879A /* UnsplashTestTests.swift */; };
 		667CCBEF28363EE90013879A /* UnsplashTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667CCBEE28363EE90013879A /* UnsplashTestUITests.swift */; };
 		667CCBF128363EE90013879A /* UnsplashTestUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667CCBF028363EE90013879A /* UnsplashTestUITestsLaunchTests.swift */; };
+		667CCC0A283655F80013879A /* NavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667CCC09283655F80013879A /* NavigationCoordinator.swift */; };
+		667CCC0C283656270013879A /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667CCC0B283656270013879A /* RootCoordinator.swift */; };
+		667CCC0F283656F20013879A /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667CCC0E283656F20013879A /* TabBarCoordinator.swift */; };
+		667CCC12283657290013879A /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667CCC11283657290013879A /* Coordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +47,10 @@
 		667CCBEA28363EE90013879A /* UnsplashTestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnsplashTestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		667CCBEE28363EE90013879A /* UnsplashTestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashTestUITests.swift; sourceTree = "<group>"; };
 		667CCBF028363EE90013879A /* UnsplashTestUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashTestUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		667CCC09283655F80013879A /* NavigationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCoordinator.swift; sourceTree = "<group>"; };
+		667CCC0B283656270013879A /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
+		667CCC0E283656F20013879A /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
+		667CCC11283657290013879A /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,8 +202,44 @@
 		667CCC06283641AA0013879A /* NavigationLayer */ = {
 			isa = PBXGroup;
 			children = (
+				667CCC10283657130013879A /* Coordinator */,
+				667CCC08283655EA0013879A /* RootCoordinator */,
 			);
 			path = NavigationLayer;
+			sourceTree = "<group>";
+		};
+		667CCC07283655D50013879A /* NavigationCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				667CCC09283655F80013879A /* NavigationCoordinator.swift */,
+			);
+			path = NavigationCoordinator;
+			sourceTree = "<group>";
+		};
+		667CCC08283655EA0013879A /* RootCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				667CCC0B283656270013879A /* RootCoordinator.swift */,
+			);
+			path = RootCoordinator;
+			sourceTree = "<group>";
+		};
+		667CCC0D2836563D0013879A /* TabBarCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				667CCC0E283656F20013879A /* TabBarCoordinator.swift */,
+			);
+			path = TabBarCoordinator;
+			sourceTree = "<group>";
+		};
+		667CCC10283657130013879A /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				667CCC0D2836563D0013879A /* TabBarCoordinator */,
+				667CCC07283655D50013879A /* NavigationCoordinator */,
+				667CCC11283657290013879A /* Coordinator.swift */,
+			);
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -328,6 +372,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				667CCC0A283655F80013879A /* NavigationCoordinator.swift in Sources */,
+				667CCC0C283656270013879A /* RootCoordinator.swift in Sources */,
+				667CCC12283657290013879A /* Coordinator.swift in Sources */,
+				667CCC0F283656F20013879A /* TabBarCoordinator.swift in Sources */,
 				667CCBCE28363EE70013879A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
