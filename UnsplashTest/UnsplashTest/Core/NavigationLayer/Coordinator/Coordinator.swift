@@ -6,9 +6,11 @@
 //
 
 import Foundation
+import UIKit
 
 protocol Coordinator {
     var children: [Coordinator] { get }
-    
+    var currentViewController: UIViewController? { get }
+
     func start()
 }

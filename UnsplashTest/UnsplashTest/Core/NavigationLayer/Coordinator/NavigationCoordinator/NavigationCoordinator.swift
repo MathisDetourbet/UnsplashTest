@@ -10,3 +10,7 @@ import UIKit
 protocol NavigationCoordinator: Coordinator {
     var navigationController: UINavigationController { get }
 }
+
+extension NavigationCoordinator {
+    var currentViewController: UIViewController? { self.navigationController }
+}

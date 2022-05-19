@@ -10,3 +10,7 @@ import UIKit
 protocol TabBarCoordinator: Coordinator {
     var tabBarController: UITabBarController { get }
 }
+
+extension TabBarCoordinator {
+    var currentViewController: UIViewController? { self.tabBarController.selectedViewController }
+}

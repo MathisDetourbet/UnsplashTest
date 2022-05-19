@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		665B7000283671CB001779A1 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665B6FFF283671CB001779A1 /* TodayViewController.swift */; };
+		665B70042836721B001779A1 /* TodayNavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665B70032836721B001779A1 /* TodayNavigationCoordinator.swift */; };
+		665B70072836784D001779A1 /* RootCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665B70062836784D001779A1 /* RootCoordinatorTests.swift */; };
 		667CCBCE28363EE70013879A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667CCBCD28363EE70013879A /* AppDelegate.swift */; };
 		667CCBD728363EE90013879A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 667CCBD628363EE90013879A /* Assets.xcassets */; };
 		667CCBDA28363EE90013879A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 667CCBD828363EE90013879A /* LaunchScreen.storyboard */; };
@@ -37,6 +40,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		665B6FFF283671CB001779A1 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		665B70032836721B001779A1 /* TodayNavigationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayNavigationCoordinator.swift; sourceTree = "<group>"; };
+		665B70062836784D001779A1 /* RootCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinatorTests.swift; sourceTree = "<group>"; };
 		667CCBCA28363EE70013879A /* UnsplashTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UnsplashTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		667CCBCD28363EE70013879A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		667CCBD628363EE90013879A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -78,6 +84,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		665B7001283671F3001779A1 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		665B70022836720E001779A1 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				665B70032836721B001779A1 /* TodayNavigationCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
 		667CCBC128363EE70013879A = {
 			isa = PBXGroup;
 			children = (
@@ -181,6 +202,9 @@
 		667CCC032836418E0013879A /* Today */ = {
 			isa = PBXGroup;
 			children = (
+				665B70022836720E001779A1 /* Coordinator */,
+				665B7001283671F3001779A1 /* ViewModels */,
+				665B6FFF283671CB001779A1 /* TodayViewController.swift */,
 			);
 			path = Today;
 			sourceTree = "<group>";
@@ -220,6 +244,7 @@
 			isa = PBXGroup;
 			children = (
 				667CCC0B283656270013879A /* RootCoordinator.swift */,
+				665B70062836784D001779A1 /* RootCoordinatorTests.swift */,
 			);
 			path = RootCoordinator;
 			sourceTree = "<group>";
@@ -374,9 +399,11 @@
 			files = (
 				667CCC0A283655F80013879A /* NavigationCoordinator.swift in Sources */,
 				667CCC0C283656270013879A /* RootCoordinator.swift in Sources */,
+				665B7000283671CB001779A1 /* TodayViewController.swift in Sources */,
 				667CCC12283657290013879A /* Coordinator.swift in Sources */,
 				667CCC0F283656F20013879A /* TabBarCoordinator.swift in Sources */,
 				667CCBCE28363EE70013879A /* AppDelegate.swift in Sources */,
+				665B70042836721B001779A1 /* TodayNavigationCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,6 +411,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				665B70072836784D001779A1 /* RootCoordinatorTests.swift in Sources */,
 				667CCBE528363EE90013879A /* UnsplashTestTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
