@@ -14,15 +14,28 @@ final class RootCoordinator: TabBarCoordinator {
 
     init(tabBarController: UITabBarController) {
         self.tabBarController = tabBarController
+        self.setupTabBarAppearance()
     }
 
     func start() {
         self.startTodayTab()
+        self.setupTodayTabIcon()
     }
 
-    // MARK: Today tab
+    private func setupTabBarAppearance() {
+        UITabBar.appearance().backgroundColor = .white
+        UITabBar.appearance().isTranslucent = true
+        self.tabBarController.tabBar.layer.borderWidth = 0.5
+        self.tabBarController.tabBar.layer.borderColor = UIColor.lightGray.cgColor
+        self.tabBarController.tabBar.clipsToBounds = true
+    }
+}
+
+// MARK: - Today tab
+private extension RootCoordinator {
+
     private func startTodayTab() {
-        let navigationController = UINavigationController(nibName: nil, bundle: nil)
+        let navigationController = UINavigationController(rootViewController: TodayViewController())
         let todayCoordinator = TodayNavigationCoordinator(navigationController: navigationController)
 
         guard let todayViewController = todayCoordinator.currentViewController else {

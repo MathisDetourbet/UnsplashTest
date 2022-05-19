@@ -18,6 +18,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
         let tabBarController = UITabBarController()
+
         self.initWindow(with: tabBarController)
         self.startRootCoordinator(with: tabBarController)
 

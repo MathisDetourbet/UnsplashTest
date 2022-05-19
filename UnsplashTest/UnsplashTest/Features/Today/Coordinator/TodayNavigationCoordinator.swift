@@ -14,10 +14,11 @@ final class TodayNavigationCoordinator: NavigationCoordinator {
 
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
+        self.navigationController.view.backgroundColor = .blue
     }
 
     func start() {
-        let todayViewController = TodayViewController(nibName: nil, bundle: nil)
-        navigationController.setViewControllers([todayViewController], animated: false)
+        let todayViewController = TodayViewController()
+        navigationController.setViewControllers([todayViewController], animated: true)
     }
 }
