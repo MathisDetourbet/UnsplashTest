@@ -40,6 +40,7 @@
 		665B706628379B7E001779A1 /* HTTPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665B705B28379B7E001779A1 /* HTTPService.swift */; };
 		665B706728379B7E001779A1 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665B705C28379B7E001779A1 /* NetworkService.swift */; };
 		665B706828379B7E001779A1 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665B705E28379B7E001779A1 /* Configuration.swift */; };
+		665B706A2837B43B001779A1 /* UnsplashAPIConfiguration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 665B70692837B43B001779A1 /* UnsplashAPIConfiguration.plist */; };
 		667CCBCE28363EE70013879A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667CCBCD28363EE70013879A /* AppDelegate.swift */; };
 		667CCBD728363EE90013879A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 667CCBD628363EE90013879A /* Assets.xcassets */; };
 		667CCBDA28363EE90013879A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 667CCBD828363EE90013879A /* LaunchScreen.storyboard */; };
@@ -103,6 +104,7 @@
 		665B705B28379B7E001779A1 /* HTTPService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPService.swift; sourceTree = "<group>"; };
 		665B705C28379B7E001779A1 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		665B705E28379B7E001779A1 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		665B70692837B43B001779A1 /* UnsplashAPIConfiguration.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = UnsplashAPIConfiguration.plist; sourceTree = "<group>"; };
 		667CCBCA28363EE70013879A /* UnsplashTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UnsplashTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		667CCBCD28363EE70013879A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		667CCBD628363EE90013879A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -529,6 +531,7 @@
 			isa = PBXGroup;
 			children = (
 				667CCBDB28363EE90013879A /* Info.plist */,
+				665B70692837B43B001779A1 /* UnsplashAPIConfiguration.plist */,
 			);
 			path = Metadata;
 			sourceTree = "<group>";
@@ -725,6 +728,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				665B706A2837B43B001779A1 /* UnsplashAPIConfiguration.plist in Resources */,
 				667CCBDA28363EE90013879A /* LaunchScreen.storyboard in Resources */,
 				667CCBD728363EE90013879A /* Assets.xcassets in Resources */,
 			);

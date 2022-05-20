@@ -69,10 +69,23 @@ final class HTTPService: NetworkService {
 // MARK: - Authorization header
 private extension HTTPService {
 
+    private static let apiAccessPlistKey = "apiAccessKey"
     private static let authorizationHeaderField = "Authorization"
 
     private func injectAuthorizationHeaders(in urlRequest: inout URLRequest) {
         // TODO: use api key fetched from info.plist file
-        urlRequest.addValue("", forHTTPHeaderField: Self.authorizationHeaderField)
+        urlRequest.addValue(apiAccessKey, forHTTPHeaderField: Self.authorizationHeaderField)
+    }
+
+    private var apiAccessKey: String {
+        guard let filePath = Bundle.main.path(forResource: "UnsplashAPIConfiguration", ofType: "plist") else {
+            fatalError("Didn't find api access key plist file")
+        }
+
+        let plist = NSDictionary(contentsOfFile: filePath)
+        guard let apiKey = plist?.object(forKey: Self.apiAccessPlistKey) as? String else {
+            fatalError("Couldn't find key \(Self.apiAccessPlistKey) in plist")
+        }
+        return apiKey
     }
 }
