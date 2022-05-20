@@ -78,6 +78,7 @@
 		66DF8270283827D400D44042 /* TodayDetailsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DF826F283827D400D44042 /* TodayDetailsFactory.swift */; };
 		66DF82732838288600D44042 /* TodayDetailsViewEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DF82722838288600D44042 /* TodayDetailsViewEvent.swift */; };
 		66DF827628382B1400D44042 /* TodayDetailsDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DF827528382B1400D44042 /* TodayDetailsDependencies.swift */; };
+		66DF827928382C6300D44042 /* TodayDetailsNavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DF827828382C6300D44042 /* TodayDetailsNavigationCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -173,6 +174,7 @@
 		66DF826F283827D400D44042 /* TodayDetailsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayDetailsFactory.swift; sourceTree = "<group>"; };
 		66DF82722838288600D44042 /* TodayDetailsViewEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayDetailsViewEvent.swift; sourceTree = "<group>"; };
 		66DF827528382B1400D44042 /* TodayDetailsDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayDetailsDependencies.swift; sourceTree = "<group>"; };
+		66DF827828382C6300D44042 /* TodayDetailsNavigationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayDetailsNavigationCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -712,6 +714,7 @@
 		667CCC04283641940013879A /* TodayDetails */ = {
 			isa = PBXGroup;
 			children = (
+				66DF827728382C5600D44042 /* Coordinator */,
 				66DF827428382B0A00D44042 /* Dependencies */,
 				66DF826E283827CA00D44042 /* Factory */,
 				66DF826B2838268700D44042 /* UseCases */,
@@ -945,6 +948,14 @@
 			path = Dependencies;
 			sourceTree = "<group>";
 		};
+		66DF827728382C5600D44042 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				66DF827828382C6300D44042 /* TodayDetailsNavigationCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1109,6 +1120,7 @@
 				66DF825E2838238000D44042 /* PhotoStatisticsDTO.swift in Sources */,
 				66DF82732838288600D44042 /* TodayDetailsViewEvent.swift in Sources */,
 				665B70182836901C001779A1 /* TodayCollectionViewHeaderSectionSupplementaryView.swift in Sources */,
+				66DF827928382C6300D44042 /* TodayDetailsNavigationCoordinator.swift in Sources */,
 				665B70412837950B001779A1 /* PhotoEntity.swift in Sources */,
 				665B70352837836E001779A1 /* PhotoDTO.swift in Sources */,
 				665B706128379B7E001779A1 /* URLRequest+HTTPRequest.swift in Sources */,

@@ -16,7 +16,6 @@ final class TodayNavigationCoordinator: NavigationCoordinator {
     init(navigationController: UINavigationController, todayDependencies: TodayDependencies) {
         self.navigationController = navigationController
         self.dependencies = todayDependencies
-        self.navigationController.view.backgroundColor = .blue
     }
 
     func start() {

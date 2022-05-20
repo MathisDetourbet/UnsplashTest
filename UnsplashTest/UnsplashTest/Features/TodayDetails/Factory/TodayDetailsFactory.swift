@@ -19,12 +19,10 @@ final class TodayDetailsFactory: TodayDetailsFactoryProtocol {
     private let photoId: String
 
     init(
-        userId: String,
-        photoId: String,
         todayDetailsDependencies: TodayDetailsDependencies
     ) {
-        self.userId = userId
-        self.photoId = photoId
+        self.userId = todayDetailsDependencies.userId
+        self.photoId = todayDetailsDependencies.photoId
         self.todayDetailsDependencies = todayDetailsDependencies
     }
 
