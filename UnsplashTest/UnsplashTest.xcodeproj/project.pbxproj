@@ -44,6 +44,8 @@
 		665B706F2837B8B5001779A1 /* PhotosRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665B706E2837B8B5001779A1 /* PhotosRepository.swift */; };
 		665B70722837B934001779A1 /* RepositoryError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665B70712837B934001779A1 /* RepositoryError.swift */; };
 		665B70762837CAE8001779A1 /* FetchTodayFeedUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665B70752837CAE8001779A1 /* FetchTodayFeedUseCase.swift */; };
+		665B70792837CD3F001779A1 /* TodayDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665B70782837CD3F001779A1 /* TodayDependencies.swift */; };
+		665B707C2837CDBD001779A1 /* AppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665B707B2837CDBD001779A1 /* AppDependencies.swift */; };
 		667CCBCE28363EE70013879A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667CCBCD28363EE70013879A /* AppDelegate.swift */; };
 		667CCBD728363EE90013879A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 667CCBD628363EE90013879A /* Assets.xcassets */; };
 		667CCBDA28363EE90013879A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 667CCBD828363EE90013879A /* LaunchScreen.storyboard */; };
@@ -111,6 +113,8 @@
 		665B706E2837B8B5001779A1 /* PhotosRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosRepository.swift; sourceTree = "<group>"; };
 		665B70712837B934001779A1 /* RepositoryError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryError.swift; sourceTree = "<group>"; };
 		665B70752837CAE8001779A1 /* FetchTodayFeedUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchTodayFeedUseCase.swift; sourceTree = "<group>"; };
+		665B70782837CD3F001779A1 /* TodayDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayDependencies.swift; sourceTree = "<group>"; };
+		665B707B2837CDBD001779A1 /* AppDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependencies.swift; sourceTree = "<group>"; };
 		667CCBCA28363EE70013879A /* UnsplashTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UnsplashTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		667CCBCD28363EE70013879A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		667CCBD628363EE90013879A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -488,6 +492,22 @@
 			path = UseCases;
 			sourceTree = "<group>";
 		};
+		665B70772837CD2F001779A1 /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				665B70782837CD3F001779A1 /* TodayDependencies.swift */,
+			);
+			path = Dependencies;
+			sourceTree = "<group>";
+		};
+		665B707A2837CDB2001779A1 /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				665B707B2837CDBD001779A1 /* AppDependencies.swift */,
+			);
+			path = Dependencies;
+			sourceTree = "<group>";
+		};
 		667CCBC128363EE70013879A = {
 			isa = PBXGroup;
 			children = (
@@ -595,6 +615,7 @@
 		667CCC032836418E0013879A /* Today */ = {
 			isa = PBXGroup;
 			children = (
+				665B70772837CD2F001779A1 /* Dependencies */,
 				665B70742837CAC2001779A1 /* UseCases */,
 				665B701328368FDB001779A1 /* Views */,
 				665B70022836720E001779A1 /* Coordinator */,
@@ -641,6 +662,7 @@
 		667CCC08283655EA0013879A /* RootCoordinator */ = {
 			isa = PBXGroup;
 			children = (
+				665B707A2837CDB2001779A1 /* Dependencies */,
 				667CCC0B283656270013879A /* RootCoordinator.swift */,
 				665B70062836784D001779A1 /* RootCoordinatorTests.swift */,
 			);
@@ -806,6 +828,7 @@
 				665B704528379614001779A1 /* EntityInitializable.swift in Sources */,
 				665B706628379B7E001779A1 /* HTTPService.swift in Sources */,
 				665B700928368A15001779A1 /* TodayViewModel.swift in Sources */,
+				665B70792837CD3F001779A1 /* TodayDependencies.swift in Sources */,
 				665B702F28377A98001779A1 /* UIImageView+ImageDownloader.swift in Sources */,
 				667CCC0F283656F20013879A /* TabBarCoordinator.swift in Sources */,
 				665B7021283698C1001779A1 /* Reusable.swift in Sources */,
@@ -817,6 +840,7 @@
 				665B70412837950B001779A1 /* PhotoEntity.swift in Sources */,
 				665B70352837836E001779A1 /* PhotoDTO.swift in Sources */,
 				665B706128379B7E001779A1 /* URLRequest+HTTPRequest.swift in Sources */,
+				665B707C2837CDBD001779A1 /* AppDependencies.swift in Sources */,
 				665B705F28379B7E001779A1 /* HTTPConfiguration.swift in Sources */,
 				665B70272836A759001779A1 /* PhotoCellViewModel.swift in Sources */,
 				665B706328379B7E001779A1 /* HTTPHeaders.swift in Sources */,

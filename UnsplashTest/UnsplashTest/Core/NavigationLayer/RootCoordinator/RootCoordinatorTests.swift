@@ -10,9 +10,18 @@ import XCTest
 
 final class RootCoordinatorTests: XCTestCase {
 
+    private var appDependencies: AppDependencies {
+        let httpService = HTTPService()
+        let httpConfiguration = HTTPConfiguration()
+        return .init(httpService: httpService, httpConfiguration: httpConfiguration)
+    }
+
     func test_start_should_add_today_coordinator_child_to_children() {
         // GIVEN
-        let rootCoordinator = RootCoordinator(tabBarController: UITabBarController(nibName: nil, bundle: nil))
+        let rootCoordinator = RootCoordinator(
+            tabBarController: UITabBarController(nibName: nil, bundle: nil),
+            appDependencies: self.appDependencies
+        )
 
         // WHEN
         rootCoordinator.start()
@@ -23,7 +32,10 @@ final class RootCoordinatorTests: XCTestCase {
 
     func test_start_should_set_todayViewController_in_first_tab() throws {
         // GIVEN
-        let rootCoordinator = RootCoordinator(tabBarController: UITabBarController(nibName: nil, bundle: nil))
+        let rootCoordinator = RootCoordinator(
+            tabBarController: UITabBarController(nibName: nil, bundle: nil),
+            appDependencies: self.appDependencies
+        )
 
         // WHEN
         rootCoordinator.start()

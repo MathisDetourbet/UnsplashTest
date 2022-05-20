@@ -9,11 +9,16 @@ import UIKit
 
 final class RootCoordinator: TabBarCoordinator {
     private(set) var children: [Coordinator] = []
+    private let appDependencies: AppDependencies
 
     let tabBarController: UITabBarController
 
-    init(tabBarController: UITabBarController) {
+    init(
+        tabBarController: UITabBarController,
+        appDependencies: AppDependencies
+    ) {
         self.tabBarController = tabBarController
+        self.appDependencies = appDependencies
         self.setupTabBarAppearance()
     }
 
@@ -36,7 +41,14 @@ private extension RootCoordinator {
 
     private func startTodayTab() {
         let navigationController = UINavigationController()
-        let todayCoordinator = TodayNavigationCoordinator(navigationController: navigationController)
+        let todayDependencies = TodayDependencies(
+            httpService: self.appDependencies.httpService,
+            httpConfiguration: self.appDependencies.httpConfiguration
+        )
+        let todayCoordinator = TodayNavigationCoordinator(
+            navigationController: navigationController,
+            todayDependencies: todayDependencies
+        )
 
         guard let todayViewController = todayCoordinator.currentViewController else {
             return

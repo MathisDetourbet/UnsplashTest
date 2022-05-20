@@ -33,7 +33,18 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     private func startRootCoordinator(with tabBarController: UITabBarController) {
-        self.rootCoordinator = RootCoordinator(tabBarController: tabBarController)
+        let appDependencies = self.createAppDependencies()
+        self.rootCoordinator = RootCoordinator(
+            tabBarController: tabBarController,
+            appDependencies: appDependencies
+        )
         self.rootCoordinator?.start()
+    }
+
+    private func createAppDependencies() -> AppDependencies {
+        let httpService = HTTPService()
+        let httpConfiguration = HTTPConfiguration()
+
+        return .init(httpService: httpService, httpConfiguration: httpConfiguration)
     }
 }

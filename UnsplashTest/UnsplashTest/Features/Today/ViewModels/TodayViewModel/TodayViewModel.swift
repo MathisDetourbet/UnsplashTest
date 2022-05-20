@@ -9,9 +9,12 @@ import Combine
 
 final class TodayViewModel: TableOrCollectionViewModel {
     private(set) var viewableList: [PhotoCellViewModelable]
+    private let fetchTodayFeedUseCase: FetchTodayFeedUseCaseProtocol
+
     let headerViewModel = TodayCollectionViewHeaderSectionSupplementaryViewModel()
 
-    init() {
+    init(fetchTodayFeedUseCase: FetchTodayFeedUseCaseProtocol) {
+        self.fetchTodayFeedUseCase = fetchTodayFeedUseCase
         self.viewableList = []
     }
 }
