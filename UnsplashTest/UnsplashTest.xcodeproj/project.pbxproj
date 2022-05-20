@@ -75,6 +75,8 @@
 		66DF82672838249000D44042 /* PhotoStatisticsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DF82662838249000D44042 /* PhotoStatisticsEntity.swift */; };
 		66DF826A2838252B00D44042 /* PhotoStatisticsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DF82692838252B00D44042 /* PhotoStatisticsRepository.swift */; };
 		66DF826D2838269800D44042 /* FetchPhotoStatisticsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DF826C2838269800D44042 /* FetchPhotoStatisticsUseCase.swift */; };
+		66DF8270283827D400D44042 /* TodayDetailsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DF826F283827D400D44042 /* TodayDetailsFactory.swift */; };
+		66DF82732838288600D44042 /* TodayDetailsViewEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DF82722838288600D44042 /* TodayDetailsViewEvent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -167,6 +169,8 @@
 		66DF82662838249000D44042 /* PhotoStatisticsEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoStatisticsEntity.swift; sourceTree = "<group>"; };
 		66DF82692838252B00D44042 /* PhotoStatisticsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoStatisticsRepository.swift; sourceTree = "<group>"; };
 		66DF826C2838269800D44042 /* FetchPhotoStatisticsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhotoStatisticsUseCase.swift; sourceTree = "<group>"; };
+		66DF826F283827D400D44042 /* TodayDetailsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayDetailsFactory.swift; sourceTree = "<group>"; };
+		66DF82722838288600D44042 /* TodayDetailsViewEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayDetailsViewEvent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -706,6 +710,7 @@
 		667CCC04283641940013879A /* TodayDetails */ = {
 			isa = PBXGroup;
 			children = (
+				66DF826E283827CA00D44042 /* Factory */,
 				66DF826B2838268700D44042 /* UseCases */,
 				66DF824E28381F9300D44042 /* ViewModels */,
 				66DF82402838085C00D44042 /* Views */,
@@ -847,6 +852,7 @@
 		66DF82572838221900D44042 /* TodayDetailsViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				66DF82712838287D00D44042 /* ViewEvent */,
 				66DF8252283820BB00D44042 /* Output */,
 				66DF8251283820B700D44042 /* Input */,
 				66DF824F28381FA600D44042 /* TodayDetailsViewModel.swift */,
@@ -910,6 +916,22 @@
 				66DF826C2838269800D44042 /* FetchPhotoStatisticsUseCase.swift */,
 			);
 			path = UseCases;
+			sourceTree = "<group>";
+		};
+		66DF826E283827CA00D44042 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				66DF826F283827D400D44042 /* TodayDetailsFactory.swift */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
+		66DF82712838287D00D44042 /* ViewEvent */ = {
+			isa = PBXGroup;
+			children = (
+				66DF82722838288600D44042 /* TodayDetailsViewEvent.swift */,
+			);
+			path = ViewEvent;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1066,12 +1088,14 @@
 				667CCBCE28363EE70013879A /* AppDelegate.swift in Sources */,
 				665B70482837972C001779A1 /* UserEntity.swift in Sources */,
 				665B706428379B7E001779A1 /* HTTPMethod.swift in Sources */,
+				66DF8270283827D400D44042 /* TodayDetailsFactory.swift in Sources */,
 				66DF826A2838252B00D44042 /* PhotoStatisticsRepository.swift in Sources */,
 				665B70832837D488001779A1 /* TodayViewModelOutput.swift in Sources */,
 				665B706F2837B8B5001779A1 /* PhotosRepository.swift in Sources */,
 				66DF82672838249000D44042 /* PhotoStatisticsEntity.swift in Sources */,
 				665B707F2837D344001779A1 /* TodayFactory.swift in Sources */,
 				66DF825E2838238000D44042 /* PhotoStatisticsDTO.swift in Sources */,
+				66DF82732838288600D44042 /* TodayDetailsViewEvent.swift in Sources */,
 				665B70182836901C001779A1 /* TodayCollectionViewHeaderSectionSupplementaryView.swift in Sources */,
 				665B70412837950B001779A1 /* PhotoEntity.swift in Sources */,
 				665B70352837836E001779A1 /* PhotoDTO.swift in Sources */,
