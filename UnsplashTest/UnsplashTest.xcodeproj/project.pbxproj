@@ -81,6 +81,7 @@
 		66DF827928382C6300D44042 /* TodayDetailsNavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DF827828382C6300D44042 /* TodayDetailsNavigationCoordinator.swift */; };
 		66DF827C283831DE00D44042 /* TodayUserSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DF827B283831DE00D44042 /* TodayUserSelection.swift */; };
 		66DF8283283839BA00D44042 /* UserPhotosRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DF8282283839BA00D44042 /* UserPhotosRepository.swift */; };
+		66DF828528383B7D00D44042 /* FetchUserPhotosUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DF828428383B7D00D44042 /* FetchUserPhotosUseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -179,6 +180,7 @@
 		66DF827828382C6300D44042 /* TodayDetailsNavigationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayDetailsNavigationCoordinator.swift; sourceTree = "<group>"; };
 		66DF827B283831DE00D44042 /* TodayUserSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayUserSelection.swift; sourceTree = "<group>"; };
 		66DF8282283839BA00D44042 /* UserPhotosRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPhotosRepository.swift; sourceTree = "<group>"; };
+		66DF828428383B7D00D44042 /* FetchUserPhotosUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchUserPhotosUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -926,6 +928,7 @@
 			isa = PBXGroup;
 			children = (
 				66DF826C2838269800D44042 /* FetchPhotoStatisticsUseCase.swift */,
+				66DF828428383B7D00D44042 /* FetchUserPhotosUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -1117,6 +1120,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66DF828528383B7D00D44042 /* FetchUserPhotosUseCase.swift in Sources */,
 				667CCC0A283655F80013879A /* NavigationCoordinator.swift in Sources */,
 				66DF8256283820CA00D44042 /* TodayDetailsViewModelInput.swift in Sources */,
 				665B706528379B7E001779A1 /* HTTPError.swift in Sources */,
