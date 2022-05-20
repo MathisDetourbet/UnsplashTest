@@ -25,7 +25,7 @@ final class TodayViewModel: TodayViewModelable {
         self.fetchTodayFeedUseCase = input.fetchTodayFeedUseCase
         self.viewableList = []
 
-        let reloadPhotosPublisher = input.viewEventInputPublisher
+        let reloadPhotosPublisher = input.viewEventPublisher
             .map { viewEvent -> Void in
                 switch viewEvent {
                 case .viewDidLoad:

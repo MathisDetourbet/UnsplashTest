@@ -9,7 +9,7 @@ import Combine
 
 protocol TodayFactoryProtocol {
     func createViewModel(
-        viewEventInputPublisher: AnyPublisher<TodayViewEvent, Never>
+        viewEventPublisher: AnyPublisher<TodayViewEvent, Never>
     ) -> TodayViewModel
 }
 
@@ -21,14 +21,14 @@ final class TodayFactory: TodayFactoryProtocol {
     }
 
     func createViewModel(
-        viewEventInputPublisher: AnyPublisher<TodayViewEvent, Never>
+        viewEventPublisher: AnyPublisher<TodayViewEvent, Never>
     ) -> TodayViewModel {
         let fetchTodayUseCase = FetchTodayFeedUseCase(
             photosRepository: self.todayDependencies.photosRepository
         )
         let input = TodayViewModelInput(
             fetchTodayFeedUseCase: fetchTodayUseCase,
-            viewEventInputPublisher: viewEventInputPublisher
+            viewEventPublisher: viewEventPublisher
         )
         return TodayViewModel(input: input)
     }

@@ -18,7 +18,7 @@ final class TodayViewController: UIViewController {
     init(factory: TodayFactoryProtocol) {
         let viewEventInputSubject = PassthroughSubject<TodayViewEvent, Never>()
         self.viewModel = factory.createViewModel(
-            viewEventInputPublisher: viewEventInputSubject.eraseToAnyPublisher()
+            viewEventPublisher: viewEventInputSubject.eraseToAnyPublisher()
         )
         self.viewEventSubject = viewEventInputSubject
         super.init(nibName: nil, bundle: nil)
