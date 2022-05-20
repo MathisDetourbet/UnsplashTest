@@ -8,6 +8,5 @@
 import Foundation
 
 struct TodayDependencies {
-    let httpService: NetworkService
-    let httpConfiguration: HTTPConfiguration
+    let photosRepository: PhotosRepositoryProtocol
 }

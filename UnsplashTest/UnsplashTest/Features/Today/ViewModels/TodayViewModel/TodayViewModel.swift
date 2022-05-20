@@ -7,14 +7,36 @@
 
 import Combine
 
-final class TodayViewModel: TableOrCollectionViewModel {
+protocol TodayViewModelable: TableOrCollectionViewModel {
+    typealias Input = TodayViewModelInputable
+    typealias Output = TodayViewModelOutputable
+
+    var output: Output { get }
+    init(input: Input)
+}
+
+final class TodayViewModel: TodayViewModelable {
     private(set) var viewableList: [PhotoCellViewModelable]
     private let fetchTodayFeedUseCase: FetchTodayFeedUseCaseProtocol
 
-    let headerViewModel = TodayCollectionViewHeaderSectionSupplementaryViewModel()
+    let output: Output
 
-    init(fetchTodayFeedUseCase: FetchTodayFeedUseCaseProtocol) {
-        self.fetchTodayFeedUseCase = fetchTodayFeedUseCase
+    init(input: Input) {
+        self.fetchTodayFeedUseCase = input.fetchTodayFeedUseCase
         self.viewableList = []
+
+        let reloadPhotosPublisher = input.viewEventInputPublisher
+            .map { viewEvent -> Void in
+                switch viewEvent {
+                case .viewDidLoad:
+                    return ()
+                }
+            }
+            .eraseToAnyPublisher()
+
+        self.output = TodayViewModelOutput(
+            reloadPhotosPublisher: reloadPhotosPublisher,
+            headerViewModel: TodayCollectionViewHeaderSectionSupplementaryViewModel()
+        )
     }
 }

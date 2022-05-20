@@ -22,13 +22,8 @@ final class TodayNavigationCoordinator: NavigationCoordinator {
     }
 
     func start() {
-        let photosRepository = PhotosRepository(
-            httpService: self.dependencies.httpService,
-            httpConfiguration: self.dependencies.httpConfiguration
-        )
-        let fetchTodayFeedUseCase = FetchTodayFeedUseCase(photosRepository: photosRepository)
-        let todayViewModel = TodayViewModel(fetchTodayFeedUseCase: fetchTodayFeedUseCase)
-        let todayViewController = TodayViewController(viewModel: todayViewModel)
-        navigationController.setViewControllers([todayViewController], animated: true)
+        let todayFactory = TodayFactory(todayDependencies: self.dependencies)
+        let todayViewController = TodayViewController(factory: todayFactory)
+        self.navigationController.setViewControllers([todayViewController], animated: true)
     }
 }

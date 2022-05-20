@@ -46,6 +46,10 @@
 		665B70762837CAE8001779A1 /* FetchTodayFeedUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665B70752837CAE8001779A1 /* FetchTodayFeedUseCase.swift */; };
 		665B70792837CD3F001779A1 /* TodayDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665B70782837CD3F001779A1 /* TodayDependencies.swift */; };
 		665B707C2837CDBD001779A1 /* AppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665B707B2837CDBD001779A1 /* AppDependencies.swift */; };
+		665B707F2837D344001779A1 /* TodayFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665B707E2837D344001779A1 /* TodayFactory.swift */; };
+		665B70832837D488001779A1 /* TodayViewModelOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665B70822837D488001779A1 /* TodayViewModelOutput.swift */; };
+		665B70852837D4E7001779A1 /* TodayViewModelInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665B70842837D4E7001779A1 /* TodayViewModelInput.swift */; };
+		665B70882837D994001779A1 /* TodayViewEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665B70872837D994001779A1 /* TodayViewEvent.swift */; };
 		667CCBCE28363EE70013879A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667CCBCD28363EE70013879A /* AppDelegate.swift */; };
 		667CCBD728363EE90013879A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 667CCBD628363EE90013879A /* Assets.xcassets */; };
 		667CCBDA28363EE90013879A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 667CCBD828363EE90013879A /* LaunchScreen.storyboard */; };
@@ -115,6 +119,10 @@
 		665B70752837CAE8001779A1 /* FetchTodayFeedUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchTodayFeedUseCase.swift; sourceTree = "<group>"; };
 		665B70782837CD3F001779A1 /* TodayDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayDependencies.swift; sourceTree = "<group>"; };
 		665B707B2837CDBD001779A1 /* AppDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependencies.swift; sourceTree = "<group>"; };
+		665B707E2837D344001779A1 /* TodayFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayFactory.swift; sourceTree = "<group>"; };
+		665B70822837D488001779A1 /* TodayViewModelOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewModelOutput.swift; sourceTree = "<group>"; };
+		665B70842837D4E7001779A1 /* TodayViewModelInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewModelInput.swift; sourceTree = "<group>"; };
+		665B70872837D994001779A1 /* TodayViewEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewEvent.swift; sourceTree = "<group>"; };
 		667CCBCA28363EE70013879A /* UnsplashTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UnsplashTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		667CCBCD28363EE70013879A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		667CCBD628363EE90013879A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -195,6 +203,9 @@
 		665B701128368F2B001779A1 /* TodayViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				665B70862837D962001779A1 /* ViewEvent */,
+				665B70812837D43E001779A1 /* Output */,
+				665B70802837D43A001779A1 /* Input */,
 				665B700828368A15001779A1 /* TodayViewModel.swift */,
 			);
 			path = TodayViewModel;
@@ -508,6 +519,38 @@
 			path = Dependencies;
 			sourceTree = "<group>";
 		};
+		665B707D2837D335001779A1 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				665B707E2837D344001779A1 /* TodayFactory.swift */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
+		665B70802837D43A001779A1 /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				665B70842837D4E7001779A1 /* TodayViewModelInput.swift */,
+			);
+			path = Input;
+			sourceTree = "<group>";
+		};
+		665B70812837D43E001779A1 /* Output */ = {
+			isa = PBXGroup;
+			children = (
+				665B70822837D488001779A1 /* TodayViewModelOutput.swift */,
+			);
+			path = Output;
+			sourceTree = "<group>";
+		};
+		665B70862837D962001779A1 /* ViewEvent */ = {
+			isa = PBXGroup;
+			children = (
+				665B70872837D994001779A1 /* TodayViewEvent.swift */,
+			);
+			path = ViewEvent;
+			sourceTree = "<group>";
+		};
 		667CCBC128363EE70013879A = {
 			isa = PBXGroup;
 			children = (
@@ -615,6 +658,7 @@
 		667CCC032836418E0013879A /* Today */ = {
 			isa = PBXGroup;
 			children = (
+				665B707D2837D335001779A1 /* Factory */,
 				665B70772837CD2F001779A1 /* Dependencies */,
 				665B70742837CAC2001779A1 /* UseCases */,
 				665B701328368FDB001779A1 /* Views */,
@@ -835,7 +879,9 @@
 				667CCBCE28363EE70013879A /* AppDelegate.swift in Sources */,
 				665B70482837972C001779A1 /* UserEntity.swift in Sources */,
 				665B706428379B7E001779A1 /* HTTPMethod.swift in Sources */,
+				665B70832837D488001779A1 /* TodayViewModelOutput.swift in Sources */,
 				665B706F2837B8B5001779A1 /* PhotosRepository.swift in Sources */,
+				665B707F2837D344001779A1 /* TodayFactory.swift in Sources */,
 				665B70182836901C001779A1 /* TodayCollectionViewHeaderSectionSupplementaryView.swift in Sources */,
 				665B70412837950B001779A1 /* PhotoEntity.swift in Sources */,
 				665B70352837836E001779A1 /* PhotoDTO.swift in Sources */,
@@ -853,10 +899,12 @@
 				665B70042836721B001779A1 /* TodayNavigationCoordinator.swift in Sources */,
 				665B706728379B7E001779A1 /* NetworkService.swift in Sources */,
 				665B70242836A053001779A1 /* PhotoCollectionViewCell.swift in Sources */,
+				665B70852837D4E7001779A1 /* TodayViewModelInput.swift in Sources */,
 				665B706828379B7E001779A1 /* Configuration.swift in Sources */,
 				665B701F2836987C001779A1 /* UICollectionView+Reusable.swift in Sources */,
 				665B701B2836949F001779A1 /* TodayCollectionViewHeaderSectionSupplementaryViewModel.swift in Sources */,
 				665B706228379B7E001779A1 /* HTTPRequest.swift in Sources */,
+				665B70882837D994001779A1 /* TodayViewEvent.swift in Sources */,
 				665B706028379B7E001779A1 /* HTTPEndPoint.swift in Sources */,
 				665B701028368D9E001779A1 /* PhotoViewModel.swift in Sources */,
 			);

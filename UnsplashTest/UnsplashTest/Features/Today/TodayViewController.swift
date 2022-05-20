@@ -6,14 +6,21 @@
 //
 
 import UIKit
+import Combine
 
 final class TodayViewController: UIViewController {
 
     private lazy var photosCollectionView = self.createCollectionView()
     private let viewModel: TodayViewModel
+    private let viewEventInputSubject: PassthroughSubject<TodayViewEvent, Never>
+    private var subscriptions: Set<AnyCancellable> = []
 
-    init(viewModel: TodayViewModel) {
-        self.viewModel = viewModel
+    init(factory: TodayFactoryProtocol) {
+        let viewEventInputSubject = PassthroughSubject<TodayViewEvent, Never>()
+        self.viewModel = factory.createViewModel(
+            viewEventInputPublisher: viewEventInputSubject.eraseToAnyPublisher()
+        )
+        self.viewEventInputSubject = viewEventInputSubject
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -26,6 +33,7 @@ final class TodayViewController: UIViewController {
         self.view.backgroundColor = .white
 
         self.setupCollectionView()
+        self.bindToViewModelOutput()
     }
 
     private func setupCollectionView() {
@@ -45,6 +53,23 @@ final class TodayViewController: UIViewController {
             self.photosCollectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
             self.photosCollectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
         ])
+    }
+}
+
+// MARK: - ViewModel binding
+private extension TodayViewController {
+
+    private func bindToViewModelOutput() {
+        self.subscriptions = []
+
+        self.viewModel
+            .output
+            .reloadPhotosPublisher
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] _ in
+                self?.photosCollectionView.reloadData()
+            }
+            .store(in: &self.subscriptions)
     }
 }
 
@@ -77,7 +102,7 @@ extension TodayViewController: UICollectionViewDataSource {
             for: indexPath,
             viewType: TodayCollectionViewHeaderSectionSupplementaryView.self
         )
-        let headerViewModel = self.viewModel.headerViewModel
+        let headerViewModel = self.viewModel.output.headerViewModel
         headerView.fill(with: headerViewModel)
         return headerView
     }
