@@ -32,12 +32,20 @@ final class TodayNavigationCoordinator: NavigationCoordinator {
         self.navigationController.setViewControllers([todayViewController], animated: true)
     }
 
+    func stop(coordinator: Coordinator) {
+        self.children.removeAll { child in
+            coordinator === child
+        }
+        self.navigationController.popViewController(animated: true)
+    }
+
     private func startTodayDetails(with dependencies: TodayDetailsDependencies) {
-        let todayDetailsCoordinator = TodayDetailsCoordinator(
+        let todayDetailsCoordinator = TodayDetailsNavigationCoordinator(
             navigationController: self.navigationController,
             todayDetailsDependencies: dependencies
         )
         todayDetailsCoordinator.start()
+        todayDetailsCoordinator.parent = self
         self.children.append(todayDetailsCoordinator)
     }
 }

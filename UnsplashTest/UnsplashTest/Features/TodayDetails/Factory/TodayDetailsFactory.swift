@@ -17,13 +17,16 @@ final class TodayDetailsFactory: TodayDetailsFactoryProtocol {
     private let todayDetailsDependencies: TodayDetailsDependencies
     private let username: String
     private let photoId: String
+    private weak var coordinatorDelegate: TodayDetailsCoordinatorDelegate?
 
     init(
-        todayDetailsDependencies: TodayDetailsDependencies
+        todayDetailsDependencies: TodayDetailsDependencies,
+        coordinatorDelegate: TodayDetailsCoordinatorDelegate
     ) {
         self.username = todayDetailsDependencies.username
         self.photoId = todayDetailsDependencies.photoId
         self.todayDetailsDependencies = todayDetailsDependencies
+        self.coordinatorDelegate = coordinatorDelegate
     }
 
     func createViewModel(
@@ -40,7 +43,8 @@ final class TodayDetailsFactory: TodayDetailsFactoryProtocol {
             photoId: self.photoId,
             viewEventPublisher: viewEventPublisher,
             fetchPhotoStatisticsUseCase: fetchPhotoStatisticsUseCase,
-            fetchUserPhotosUseCase: fetchUserPhotosUseCase
+            fetchUserPhotosUseCase: fetchUserPhotosUseCase,
+            coordinatorDelegate: self.coordinatorDelegate
         )
         return .init(input: input)
     }

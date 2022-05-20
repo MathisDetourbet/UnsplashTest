@@ -8,9 +8,10 @@
 import Foundation
 import UIKit
 
-protocol Coordinator {
+protocol Coordinator: AnyObject {
     var children: [Coordinator] { get }
     var currentViewController: UIViewController? { get }
 
     func start()
+    func stop(coordinator: Coordinator)
 }

@@ -10,4 +10,6 @@ import Foundation
 enum TodayDetailsViewEvent {
     /// View has been loaded.
     case viewDidLoad
+    /// User did tap on close CTA.
+    case didTapOnClose
 }

@@ -9,18 +9,32 @@ import UIKit
 import Combine
 
 final class TodayDetailsViewController: UIViewController {
-    private lazy var userPhotosCollectionView = self.createCollectionView()
     private let viewEventSubject: PassthroughSubject<TodayDetailsViewEvent, Never>
     private let viewModel: TodayDetailsViewModel
     private var subscriptions: Set<AnyCancellable> = []
     private var footerViewModel: TodayDetailsCollectionViewFooterSectionSupplementaryViewModelable?
 
+    private lazy var userPhotosCollectionView = self.createCollectionView()
+    private lazy var closeButton: UIButton = {
+        let button = UIButton(type: .custom)
+        button.addTarget(self, action: #selector(self.closeButtonTap(_:)), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        let closeImage = UIImage(named: "close")
+        button.setImage(closeImage, for: .normal)
+        button.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        button.widthAnchor.constraint(equalTo: button.heightAnchor).isActive = true
+        button.tintColor = .gray
+        return button
+    }()
+
     init(factory: TodayDetailsFactoryProtocol) {
         let viewEventSubject = PassthroughSubject<TodayDetailsViewEvent, Never>()
+
         self.viewModel = factory.createViewModel(
             viewEventPublisher: viewEventSubject.eraseToAnyPublisher()
         )
         self.viewEventSubject = viewEventSubject
+
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -38,6 +52,7 @@ final class TodayDetailsViewController: UIViewController {
     private func buildUI() {
         self.view.backgroundColor = .white
         self.setupCollectionView()
+        self.setupCloseButton()
     }
 
     private func setupCollectionView() {
@@ -57,6 +72,33 @@ final class TodayDetailsViewController: UIViewController {
             self.userPhotosCollectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
             self.userPhotosCollectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
         ])
+    }
+
+    private func setupCloseButton() {
+        let backgroundCircleView = UIView()
+        backgroundCircleView.backgroundColor = .white
+        backgroundCircleView.layer.cornerRadius = 50/2
+        backgroundCircleView.clipsToBounds = true
+        backgroundCircleView.translatesAutoresizingMaskIntoConstraints = false
+
+        self.view.addSubview(backgroundCircleView)
+        backgroundCircleView.addSubview(self.closeButton)
+
+        NSLayoutConstraint.activate([
+            backgroundCircleView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 50),
+            backgroundCircleView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -15),
+            backgroundCircleView.heightAnchor.constraint(equalToConstant: 50),
+            backgroundCircleView.widthAnchor.constraint(equalTo: backgroundCircleView.heightAnchor),
+
+
+            self.closeButton.centerXAnchor.constraint(equalTo: backgroundCircleView.centerXAnchor),
+            self.closeButton.centerYAnchor.constraint(equalTo: backgroundCircleView.centerYAnchor)
+        ])
+    }
+
+    @objc
+    private func closeButtonTap(_ sender: UIButton) {
+        self.viewEventSubject.send(.didTapOnClose)
     }
 }
 

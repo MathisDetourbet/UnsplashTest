@@ -13,6 +13,7 @@ protocol TodayDetailsViewModelInputable {
     var viewEventPublisher: AnyPublisher<TodayDetailsViewEvent, Never> { get }
     var fetchPhotoStatisticsUseCase: FetchPhotoStatisticsUseCaseProtocol { get }
     var fetchUserPhotosUseCase: FetchUserPhotosUseCaseProtocol { get }
+    var coordinatorDelegate: TodayDetailsCoordinatorDelegate? { get set }
 }
 
 struct TodayDetailsViewModelInput: TodayDetailsViewModelInputable {
@@ -21,4 +22,5 @@ struct TodayDetailsViewModelInput: TodayDetailsViewModelInputable {
     let viewEventPublisher: AnyPublisher<TodayDetailsViewEvent, Never>
     let fetchPhotoStatisticsUseCase: FetchPhotoStatisticsUseCaseProtocol
     let fetchUserPhotosUseCase: FetchUserPhotosUseCaseProtocol
+    weak var coordinatorDelegate: TodayDetailsCoordinatorDelegate?
 }

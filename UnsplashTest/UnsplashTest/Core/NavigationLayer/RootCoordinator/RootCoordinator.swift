@@ -27,6 +27,8 @@ final class RootCoordinator: TabBarCoordinator {
         self.setupTodayTabIcon()
     }
 
+    func stop(coordinator: Coordinator) {}
+
     private func setupTabBarAppearance() {
         UITabBar.appearance().backgroundColor = .white
         UITabBar.appearance().isTranslucent = true

@@ -79,6 +79,13 @@ final class TodayDetailsViewModel: TodayDetailsViewModelable {
                 self?.viewableList = photoDetailsViewModel
             }
             .store(in: &self.subscriptions)
+
+        input.viewEventPublisher
+            .filter { $0 == .didTapOnClose }
+            .sink { [input] _ in
+                input.coordinatorDelegate?.userDidTapOnClose()
+            }
+            .store(in: &self.subscriptions)
     }
 }
 
