@@ -12,6 +12,7 @@ final class TodayDetailsViewController: UIViewController {
     private lazy var userPhotosCollectionView = self.createCollectionView()
     private let viewEventSubject: PassthroughSubject<TodayDetailsViewEvent, Never>
     private let viewModel: TodayDetailsViewModel
+    private var subscriptions: Set<AnyCancellable> = []
 
     init(factory: TodayDetailsFactoryProtocol) {
         let viewEventSubject = PassthroughSubject<TodayDetailsViewEvent, Never>()
@@ -29,6 +30,7 @@ final class TodayDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.buildUI()
+        self.bindToViewModelOutput()
         self.viewEventSubject.send(.viewDidLoad)
     }
 
@@ -55,17 +57,34 @@ final class TodayDetailsViewController: UIViewController {
     }
 }
 
+// MARK: - ViewModel binding
+private extension TodayDetailsViewController {
+
+    private func bindToViewModelOutput() {
+        self.subscriptions = []
+
+        self.viewModel
+            .output
+            .reloadPhotosPublisher
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] _ in
+                self?.userPhotosCollectionView.performBatchUpdates({
+                    self?.userPhotosCollectionView.reloadSections(IndexSet(integer: 0))
+                })
+            }
+            .store(in: &self.subscriptions)
+    }
+}
+
 // MARK: - Collection view data source
 extension TodayDetailsViewController: UICollectionViewDataSource {
 
     func collectionView(_ _: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // TODO: To implement
-        0
+        self.viewModel.numberOfItemsIn(section)
     }
 
     func numberOfSections(in _: UICollectionView) -> Int {
-        // TODO: To implement
-        0
+        self.viewModel.numberOfSections
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
