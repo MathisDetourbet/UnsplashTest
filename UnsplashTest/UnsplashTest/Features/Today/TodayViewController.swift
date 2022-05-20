@@ -131,7 +131,7 @@ private extension TodayViewController {
         static let cellAspectRatio: CGFloat = 655/533
         static let minimumLineSpacing: CGFloat = 30.0
         static let collectionHorizontalInset: CGFloat = 5.0
-        static let collectionViewMargins: CGFloat = 5.0
+        static let collectionViewMargins: CGFloat = 12.0
         static let headerViewHeight: CGFloat = 80.0
     }
 

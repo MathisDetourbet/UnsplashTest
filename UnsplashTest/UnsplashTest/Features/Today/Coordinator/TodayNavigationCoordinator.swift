@@ -7,8 +7,6 @@
 
 import UIKit
 
-
-
 final class TodayNavigationCoordinator: NavigationCoordinator {
     private(set) var children: [Coordinator] = []
     private let dependencies: TodayDependencies
@@ -24,6 +22,7 @@ final class TodayNavigationCoordinator: NavigationCoordinator {
     func start() {
         let todayFactory = TodayFactory(todayDependencies: self.dependencies)
         let todayViewController = TodayViewController(factory: todayFactory)
+        self.navigationController.setNavigationBarHidden(true, animated: false)
         self.navigationController.setViewControllers([todayViewController], animated: true)
     }
 }

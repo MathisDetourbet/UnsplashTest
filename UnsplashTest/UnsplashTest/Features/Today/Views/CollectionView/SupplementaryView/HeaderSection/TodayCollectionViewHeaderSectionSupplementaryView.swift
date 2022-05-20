@@ -8,13 +8,11 @@
 import UIKit
 
 final class TodayCollectionViewHeaderSectionSupplementaryView: UICollectionReusableView, Reusable {
-    static let reuseIdentifier: String = .init(describing: TodayCollectionViewHeaderSectionSupplementaryView.self)
-
     private let todayDateLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .lightGray
-        label.font = UIFont.boldSystemFont(ofSize: 14.0)
+        label.font = UIFont.boldSystemFont(ofSize: 16.0)
         label.setContentCompressionResistancePriority(.defaultHigh, for: .vertical)
         label.setContentHuggingPriority(.defaultHigh, for: .vertical)
         return label
