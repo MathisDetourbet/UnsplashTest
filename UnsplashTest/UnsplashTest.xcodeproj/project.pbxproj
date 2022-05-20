@@ -65,6 +65,10 @@
 		66DF824828380D3100D44042 /* TodayDetailsCollectionViewFooterSectionSupplementaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DF824728380D3100D44042 /* TodayDetailsCollectionViewFooterSectionSupplementaryViewModel.swift */; };
 		66DF824A28381B5200D44042 /* TodayDetailsCollectionViewFooterSectionSupplementaryViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DF824928381B5200D44042 /* TodayDetailsCollectionViewFooterSectionSupplementaryViewModelTests.swift */; };
 		66DF824D28381CE100D44042 /* XCTestCase+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DF824C28381CE100D44042 /* XCTestCase+Combine.swift */; };
+		66DF825028381FA600D44042 /* TodayDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DF824F28381FA600D44042 /* TodayDetailsViewModel.swift */; };
+		66DF8254283820C500D44042 /* TodayDetailsViewModelOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DF8253283820C500D44042 /* TodayDetailsViewModelOutput.swift */; };
+		66DF8256283820CA00D44042 /* TodayDetailsViewModelInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DF8255283820CA00D44042 /* TodayDetailsViewModelInput.swift */; };
+		66DF825A2838223E00D44042 /* PictureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DF82592838223E00D44042 /* PictureViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,6 +151,10 @@
 		66DF824728380D3100D44042 /* TodayDetailsCollectionViewFooterSectionSupplementaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayDetailsCollectionViewFooterSectionSupplementaryViewModel.swift; sourceTree = "<group>"; };
 		66DF824928381B5200D44042 /* TodayDetailsCollectionViewFooterSectionSupplementaryViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayDetailsCollectionViewFooterSectionSupplementaryViewModelTests.swift; sourceTree = "<group>"; };
 		66DF824C28381CE100D44042 /* XCTestCase+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Combine.swift"; sourceTree = "<group>"; };
+		66DF824F28381FA600D44042 /* TodayDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayDetailsViewModel.swift; sourceTree = "<group>"; };
+		66DF8253283820C500D44042 /* TodayDetailsViewModelOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayDetailsViewModelOutput.swift; sourceTree = "<group>"; };
+		66DF8255283820CA00D44042 /* TodayDetailsViewModelInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayDetailsViewModelInput.swift; sourceTree = "<group>"; };
+		66DF82592838223E00D44042 /* PictureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -683,6 +691,7 @@
 		667CCC04283641940013879A /* TodayDetails */ = {
 			isa = PBXGroup;
 			children = (
+				66DF824E28381F9300D44042 /* ViewModels */,
 				66DF82402838085C00D44042 /* Views */,
 				66DF823E2838070900D44042 /* TodayDetailsViewController.swift */,
 			);
@@ -792,6 +801,49 @@
 				66DF824C28381CE100D44042 /* XCTestCase+Combine.swift */,
 			);
 			path = XCTestCase;
+			sourceTree = "<group>";
+		};
+		66DF824E28381F9300D44042 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				66DF82582838223700D44042 /* PictureViewModel */,
+				66DF82572838221900D44042 /* TodayDetailsViewModel */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		66DF8251283820B700D44042 /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				66DF8255283820CA00D44042 /* TodayDetailsViewModelInput.swift */,
+			);
+			path = Input;
+			sourceTree = "<group>";
+		};
+		66DF8252283820BB00D44042 /* Output */ = {
+			isa = PBXGroup;
+			children = (
+				66DF8253283820C500D44042 /* TodayDetailsViewModelOutput.swift */,
+			);
+			path = Output;
+			sourceTree = "<group>";
+		};
+		66DF82572838221900D44042 /* TodayDetailsViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				66DF8252283820BB00D44042 /* Output */,
+				66DF8251283820B700D44042 /* Input */,
+				66DF824F28381FA600D44042 /* TodayDetailsViewModel.swift */,
+			);
+			path = TodayDetailsViewModel;
+			sourceTree = "<group>";
+		};
+		66DF82582838223700D44042 /* PictureViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				66DF82592838223E00D44042 /* PictureViewModel.swift */,
+			);
+			path = PictureViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -926,9 +978,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				667CCC0A283655F80013879A /* NavigationCoordinator.swift in Sources */,
+				66DF8256283820CA00D44042 /* TodayDetailsViewModelInput.swift in Sources */,
 				665B706528379B7E001779A1 /* HTTPError.swift in Sources */,
 				667CCC0C283656270013879A /* RootCoordinator.swift in Sources */,
 				665B7000283671CB001779A1 /* TodayViewController.swift in Sources */,
+				66DF825028381FA600D44042 /* TodayDetailsViewModel.swift in Sources */,
 				66DF8245283808BA00D44042 /* TodayDetailsCollectionViewFooterSectionSupplementaryView.swift in Sources */,
 				665B703B28378853001779A1 /* ProfileImageDTO.swift in Sources */,
 				667CCC12283657290013879A /* Coordinator.swift in Sources */,
@@ -962,11 +1016,13 @@
 				665B70722837B934001779A1 /* RepositoryError.swift in Sources */,
 				665B703D28379417001779A1 /* URLsDTO.swift in Sources */,
 				665B702D2836AA97001779A1 /* ImageCache.swift in Sources */,
+				66DF8254283820C500D44042 /* TodayDetailsViewModelOutput.swift in Sources */,
 				665B70042836721B001779A1 /* TodayNavigationCoordinator.swift in Sources */,
 				665B706728379B7E001779A1 /* NetworkService.swift in Sources */,
 				665B70242836A053001779A1 /* PhotoCollectionViewCell.swift in Sources */,
 				665B70852837D4E7001779A1 /* TodayViewModelInput.swift in Sources */,
 				665B706828379B7E001779A1 /* Configuration.swift in Sources */,
+				66DF825A2838223E00D44042 /* PictureViewModel.swift in Sources */,
 				665B701F2836987C001779A1 /* UICollectionView+Reusable.swift in Sources */,
 				665B701B2836949F001779A1 /* TodayCollectionViewHeaderSectionSupplementaryViewModel.swift in Sources */,
 				665B706228379B7E001779A1 /* HTTPRequest.swift in Sources */,

@@ -9,10 +9,10 @@ import Combine
 
 protocol TodayViewModelOutputable {
     var reloadPhotosPublisher: AnyPublisher<Void, Never> { get }
-    var headerViewModel: TodayCollectionViewHeaderSectionSupplementaryViewModel { get }
+    var headerViewModel: TodayCollectionViewHeaderSectionSupplementaryViewModelable { get }
 }
 
 struct TodayViewModelOutput: TodayViewModelOutputable {
     let reloadPhotosPublisher: AnyPublisher<Void, Never>
-    let headerViewModel: TodayCollectionViewHeaderSectionSupplementaryViewModel
+    let headerViewModel: TodayCollectionViewHeaderSectionSupplementaryViewModelable
 }
