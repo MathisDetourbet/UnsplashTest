@@ -16,11 +16,11 @@ final class TodayViewController: UIViewController {
     private var subscriptions: Set<AnyCancellable> = []
 
     init(factory: TodayFactoryProtocol) {
-        let viewEventInputSubject = PassthroughSubject<TodayViewEvent, Never>()
+        let viewEventSubject = PassthroughSubject<TodayViewEvent, Never>()
         self.viewModel = factory.createViewModel(
-            viewEventPublisher: viewEventInputSubject.eraseToAnyPublisher()
+            viewEventPublisher: viewEventSubject.eraseToAnyPublisher()
         )
-        self.viewEventSubject = viewEventInputSubject
+        self.viewEventSubject = viewEventSubject
         super.init(nibName: nil, bundle: nil)
     }
 

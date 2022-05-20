@@ -6,13 +6,30 @@
 //
 
 import UIKit
+import Combine
 
 final class TodayDetailsViewController: UIViewController {
     private lazy var userPhotosCollectionView = self.createCollectionView()
+    private let viewEventSubject: PassthroughSubject<TodayDetailsViewEvent, Never>
+    private let viewModel: TodayDetailsViewModel
+
+    init(factory: TodayDetailsFactoryProtocol) {
+        let viewEventSubject = PassthroughSubject<TodayDetailsViewEvent, Never>()
+        self.viewModel = factory.createViewModel(
+            viewEventPublisher: viewEventSubject.eraseToAnyPublisher()
+        )
+        self.viewEventSubject = viewEventSubject
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.buildUI()
+        self.viewEventSubject.send(.viewDidLoad)
     }
 
     private func buildUI() {
