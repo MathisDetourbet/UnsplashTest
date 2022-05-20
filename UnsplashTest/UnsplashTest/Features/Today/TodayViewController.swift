@@ -42,9 +42,8 @@ final class TodayViewController: UIViewController {
         self.photosCollectionView.dataSource = self
         self.photosCollectionView.delegate = self
         self.photosCollectionView.register(
-            TodayCollectionViewHeaderSectionSupplementaryView.self,
-            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-            withReuseIdentifier: TodayCollectionViewHeaderSectionSupplementaryView.reuseIdentifier
+            supplementaryViewType: TodayCollectionViewHeaderSectionSupplementaryView.self,
+            ofKind: UICollectionView.elementKindSectionHeader
         )
         self.photosCollectionView.register(cellType: PhotoCollectionViewCell.self)
         self.photosCollectionView.translatesAutoresizingMaskIntoConstraints = false

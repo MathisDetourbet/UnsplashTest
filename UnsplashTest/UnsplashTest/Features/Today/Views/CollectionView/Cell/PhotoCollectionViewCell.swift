@@ -113,7 +113,7 @@ final class PhotoCollectionViewCell: UICollectionViewCell, Reusable {
             self.backgroundImageView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
             self.backgroundImageView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
 
-            // containerView
+            // containerVStackView
             containerView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 20),
             containerView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 20),
             containerView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -20),
