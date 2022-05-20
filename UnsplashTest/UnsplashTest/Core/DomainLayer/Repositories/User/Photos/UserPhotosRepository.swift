@@ -1,5 +1,5 @@
 //
-//  PhotosRepository.swift
+//  UserPhotosRepository.swift
 //  UnsplashTest
 //
 //  Created by Mathis DETOURBET on 20/05/2022.
@@ -7,11 +7,11 @@
 
 import Combine
 
-protocol PhotosRepositoryProtocol {
-    func getPhotos() -> AnyPublisher<[PhotoEntity], RepositoryError>
+protocol UserPhotosRepositoryProtocol {
+    func getUserPhotos(forUsername username: String) -> AnyPublisher<[PhotoEntity], RepositoryError>
 }
 
-final class PhotosRepository: PhotosRepositoryProtocol {
+final class UserPhotosRepository: UserPhotosRepositoryProtocol {
     let httpService: NetworkService
     let httpConfiguration: HTTPConfiguration
 
@@ -23,10 +23,10 @@ final class PhotosRepository: PhotosRepositoryProtocol {
         self.httpConfiguration = httpConfiguration
     }
 
-    func getPhotos() -> AnyPublisher<[PhotoEntity], RepositoryError> {
+    func getUserPhotos(forUsername username: String) -> AnyPublisher<[PhotoEntity], RepositoryError> {
         let request = HTTPRequest(
             baseUrl: self.httpConfiguration.urlScheme,
-            endPoint: .feedPhotos,
+            endPoint: .userPhotos(username: username),
             method: .get,
             headers: nil,
             parameters: nil,

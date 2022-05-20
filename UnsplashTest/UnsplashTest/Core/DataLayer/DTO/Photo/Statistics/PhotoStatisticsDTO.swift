@@ -8,6 +8,11 @@
 import Foundation
 
 struct PhotoStatisticsDTO: Decodable {
-    let downloads: PhotoStatisticsDownloadsDTO
-    let views: PhotoStatisticsViewsDTO
+    let downloadsDTO: PhotoStatisticsDownloadsDTO
+    let viewsDTO: PhotoStatisticsViewsDTO
+
+    enum CodingKeys: String, CodingKey {
+        case downloadsDTO = "downloads"
+        case viewsDTO = "views"
+    }
 }
