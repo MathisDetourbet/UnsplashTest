@@ -12,6 +12,7 @@ protocol TodayDetailsViewModelInputable {
     var photoId: String { get }
     var viewEventPublisher: AnyPublisher<TodayDetailsViewEvent, Never> { get }
     var fetchPhotoStatisticsUseCase: FetchPhotoStatisticsUseCaseProtocol { get }
+    var fetchUserPhotosUseCase: FetchUserPhotosUseCaseProtocol { get }
 }
 
 struct TodayDetailsViewModelInput: TodayDetailsViewModelInputable {
@@ -19,4 +20,5 @@ struct TodayDetailsViewModelInput: TodayDetailsViewModelInputable {
     let photoId: String
     let viewEventPublisher: AnyPublisher<TodayDetailsViewEvent, Never>
     let fetchPhotoStatisticsUseCase: FetchPhotoStatisticsUseCaseProtocol
+    let fetchUserPhotosUseCase: FetchUserPhotosUseCaseProtocol
 }

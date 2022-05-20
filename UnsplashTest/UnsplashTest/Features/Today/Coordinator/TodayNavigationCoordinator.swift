@@ -51,7 +51,8 @@ extension TodayNavigationCoordinator: TodayNavigationCoordinatorDelegate {
         let todayDetailsDependencies = TodayDetailsDependencies(
             username: username,
             photoId: photoId,
-            photoStatisticsRepository: self.dependencies.photoStatisticsRepository
+            photoStatisticsRepository: self.dependencies.photoStatisticsRepository,
+            userPhotosRepository: self.dependencies.userPhotosRepository
         )
         self.startTodayDetails(with: todayDetailsDependencies)
     }

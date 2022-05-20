@@ -32,11 +32,15 @@ final class TodayDetailsFactory: TodayDetailsFactoryProtocol {
         let fetchPhotoStatisticsUseCase = FetchPhotoStatisticsUseCase(
             photoStatisticsRepository: self.todayDetailsDependencies.photoStatisticsRepository
         )
+        let fetchUserPhotosUseCase = FetchUserPhotosUseCase(
+            repository: self.todayDetailsDependencies.userPhotosRepository
+        )
         let input = TodayDetailsViewModelInput(
             username: self.username,
             photoId: self.photoId,
             viewEventPublisher: viewEventPublisher,
-            fetchPhotoStatisticsUseCase: fetchPhotoStatisticsUseCase
+            fetchPhotoStatisticsUseCase: fetchPhotoStatisticsUseCase,
+            fetchUserPhotosUseCase: fetchUserPhotosUseCase
         )
         return .init(input: input)
     }

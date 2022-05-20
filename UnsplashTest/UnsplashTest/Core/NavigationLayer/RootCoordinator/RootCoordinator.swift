@@ -41,6 +41,7 @@ private extension RootCoordinator {
 
     private func startTodayTab() {
         let navigationController = UINavigationController()
+
         let photosRepository = PhotosRepository(
             httpService: self.appDependencies.httpService,
             httpConfiguration: self.appDependencies.httpConfiguration
@@ -49,9 +50,14 @@ private extension RootCoordinator {
             httpService: self.appDependencies.httpService,
             httpConfiguration: self.appDependencies.httpConfiguration
         )
+        let userPhotosRepository = UserPhotosRepository(
+            httpService: self.appDependencies.httpService,
+            httpConfiguration: self.appDependencies.httpConfiguration
+        )
         let todayDependencies = TodayDependencies(
             photosRepository: photosRepository,
-            photoStatisticsRepository: photosStatisticsRepository
+            photoStatisticsRepository: photosStatisticsRepository,
+            userPhotosRepository: userPhotosRepository
         )
         let todayCoordinator = TodayNavigationCoordinator(
             navigationController: navigationController,

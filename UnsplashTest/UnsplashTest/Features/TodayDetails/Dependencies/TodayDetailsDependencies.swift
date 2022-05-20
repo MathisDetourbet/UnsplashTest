@@ -11,4 +11,5 @@ struct TodayDetailsDependencies {
     let username: String
     let photoId: String
     let photoStatisticsRepository: PhotoStatisticsRepositoryProtocol
+    let userPhotosRepository: UserPhotosRepositoryProtocol
 }
