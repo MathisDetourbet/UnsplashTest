@@ -11,6 +11,6 @@ struct PhotoDTO: Decodable {
     let id: String
     let description: String?
     let likes: Int
-    let user: UserDTO
-    let urls: URLs
+    let userDTO: UserDTO
+    let urlsDTO: URLsDTO
 }

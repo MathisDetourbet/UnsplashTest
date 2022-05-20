@@ -27,6 +27,9 @@
 		665B703828378811001779A1 /* UserDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665B703728378811001779A1 /* UserDTO.swift */; };
 		665B703B28378853001779A1 /* ProfileImageDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665B703A28378853001779A1 /* ProfileImageDTO.swift */; };
 		665B703D28379417001779A1 /* URLsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665B703C28379417001779A1 /* URLsDTO.swift */; };
+		665B70412837950B001779A1 /* PhotoEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665B70402837950B001779A1 /* PhotoEntity.swift */; };
+		665B704528379614001779A1 /* EntityInitializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665B704428379614001779A1 /* EntityInitializable.swift */; };
+		665B70482837972C001779A1 /* UserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665B70472837972C001779A1 /* UserEntity.swift */; };
 		667CCBCE28363EE70013879A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667CCBCD28363EE70013879A /* AppDelegate.swift */; };
 		667CCBD728363EE90013879A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 667CCBD628363EE90013879A /* Assets.xcassets */; };
 		667CCBDA28363EE90013879A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 667CCBD828363EE90013879A /* LaunchScreen.storyboard */; };
@@ -77,6 +80,9 @@
 		665B703728378811001779A1 /* UserDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDTO.swift; sourceTree = "<group>"; };
 		665B703A28378853001779A1 /* ProfileImageDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageDTO.swift; sourceTree = "<group>"; };
 		665B703C28379417001779A1 /* URLsDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLsDTO.swift; sourceTree = "<group>"; };
+		665B70402837950B001779A1 /* PhotoEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEntity.swift; sourceTree = "<group>"; };
+		665B704428379614001779A1 /* EntityInitializable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityInitializable.swift; sourceTree = "<group>"; };
+		665B70472837972C001779A1 /* UserEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEntity.swift; sourceTree = "<group>"; };
 		667CCBCA28363EE70013879A /* UnsplashTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UnsplashTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		667CCBCD28363EE70013879A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		667CCBD628363EE90013879A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -138,6 +144,7 @@
 		665B700B28368A9A001779A1 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				665B70432837957D001779A1 /* DTO+Entity */,
 				665B702B2836AA83001779A1 /* ImageCache */,
 				665B70282836A9FE001779A1 /* ImageDownloader */,
 				665B701228368F4A001779A1 /* UIKit */,
@@ -251,6 +258,7 @@
 		665B703128378352001779A1 /* DataLayer */ = {
 			isa = PBXGroup;
 			children = (
+				665B703F283794F2001779A1 /* Entities */,
 				665B703228378358001779A1 /* DTO */,
 			);
 			path = DataLayer;
@@ -297,6 +305,39 @@
 				665B703C28379417001779A1 /* URLsDTO.swift */,
 			);
 			path = URLs;
+			sourceTree = "<group>";
+		};
+		665B703F283794F2001779A1 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				665B70462837971F001779A1 /* User */,
+				665B704228379570001779A1 /* Photo */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		665B704228379570001779A1 /* Photo */ = {
+			isa = PBXGroup;
+			children = (
+				665B70402837950B001779A1 /* PhotoEntity.swift */,
+			);
+			path = Photo;
+			sourceTree = "<group>";
+		};
+		665B70432837957D001779A1 /* DTO+Entity */ = {
+			isa = PBXGroup;
+			children = (
+				665B704428379614001779A1 /* EntityInitializable.swift */,
+			);
+			path = "DTO+Entity";
+			sourceTree = "<group>";
+		};
+		665B70462837971F001779A1 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				665B70472837972C001779A1 /* UserEntity.swift */,
+			);
+			path = User;
 			sourceTree = "<group>";
 		};
 		667CCBC128363EE70013879A = {
@@ -605,12 +646,15 @@
 				665B7000283671CB001779A1 /* TodayViewController.swift in Sources */,
 				665B703B28378853001779A1 /* ProfileImageDTO.swift in Sources */,
 				667CCC12283657290013879A /* Coordinator.swift in Sources */,
+				665B704528379614001779A1 /* EntityInitializable.swift in Sources */,
 				665B700928368A15001779A1 /* TodayViewModel.swift in Sources */,
 				665B702F28377A98001779A1 /* UIImageView+ImageDownloader.swift in Sources */,
 				667CCC0F283656F20013879A /* TabBarCoordinator.swift in Sources */,
 				665B7021283698C1001779A1 /* Reusable.swift in Sources */,
 				667CCBCE28363EE70013879A /* AppDelegate.swift in Sources */,
+				665B70482837972C001779A1 /* UserEntity.swift in Sources */,
 				665B70182836901C001779A1 /* TodayCollectionViewHeaderSectionSupplementaryView.swift in Sources */,
+				665B70412837950B001779A1 /* PhotoEntity.swift in Sources */,
 				665B70352837836E001779A1 /* PhotoDTO.swift in Sources */,
 				665B70272836A759001779A1 /* PhotoCellViewModel.swift in Sources */,
 				665B703828378811001779A1 /* UserDTO.swift in Sources */,

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct URLs: Decodable {
+struct URLsDTO: Decodable {
     let regular: String
     let full: String
 }
