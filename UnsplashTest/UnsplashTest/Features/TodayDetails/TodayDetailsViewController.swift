@@ -46,6 +46,7 @@ final class TodayDetailsViewController: UIViewController {
             supplementaryViewType: TodayDetailsCollectionViewFooterSectionSupplementaryView.self,
             ofKind: UICollectionView.elementKindSectionFooter
         )
+        self.userPhotosCollectionView.register(cellType: PhotoDetailsCollectionViewCell.self)
         self.userPhotosCollectionView.register(cellType: PhotoCollectionViewCell.self)
         self.userPhotosCollectionView.translatesAutoresizingMaskIntoConstraints = false
 
@@ -106,8 +107,10 @@ extension TodayDetailsViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        // TODO: To implement
-        fatalError()
+        let cell = collectionView.dequeueReusableCell(for: indexPath, cellType: PhotoDetailsCollectionViewCell.self)
+        let cellViewModel = self.viewModel.elementAt(indexPath)
+        cell.fill(with: cellViewModel)
+        return cell
     }
 
     func collectionView(
