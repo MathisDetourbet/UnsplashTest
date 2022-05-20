@@ -69,6 +69,9 @@
 		66DF8254283820C500D44042 /* TodayDetailsViewModelOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DF8253283820C500D44042 /* TodayDetailsViewModelOutput.swift */; };
 		66DF8256283820CA00D44042 /* TodayDetailsViewModelInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DF8255283820CA00D44042 /* TodayDetailsViewModelInput.swift */; };
 		66DF825A2838223E00D44042 /* PictureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DF82592838223E00D44042 /* PictureViewModel.swift */; };
+		66DF825E2838238000D44042 /* PhotoStatisticsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DF825D2838238000D44042 /* PhotoStatisticsDTO.swift */; };
+		66DF8261283823D100D44042 /* PhotoStatisticsDownloadsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DF8260283823D100D44042 /* PhotoStatisticsDownloadsDTO.swift */; };
+		66DF8264283823FC00D44042 /* PhotoStatisticsViewsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DF8263283823FC00D44042 /* PhotoStatisticsViewsDTO.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -155,6 +158,9 @@
 		66DF8253283820C500D44042 /* TodayDetailsViewModelOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayDetailsViewModelOutput.swift; sourceTree = "<group>"; };
 		66DF8255283820CA00D44042 /* TodayDetailsViewModelInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayDetailsViewModelInput.swift; sourceTree = "<group>"; };
 		66DF82592838223E00D44042 /* PictureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureViewModel.swift; sourceTree = "<group>"; };
+		66DF825D2838238000D44042 /* PhotoStatisticsDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoStatisticsDTO.swift; sourceTree = "<group>"; };
+		66DF8260283823D100D44042 /* PhotoStatisticsDownloadsDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoStatisticsDownloadsDTO.swift; sourceTree = "<group>"; };
+		66DF8263283823FC00D44042 /* PhotoStatisticsViewsDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoStatisticsViewsDTO.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -337,6 +343,7 @@
 		665B70332837835E001779A1 /* Photo */ = {
 			isa = PBXGroup;
 			children = (
+				66DF825C2838236400D44042 /* Statistics */,
 				665B703E28379423001779A1 /* URLs */,
 				665B70342837836E001779A1 /* PhotoDTO.swift */,
 			);
@@ -846,6 +853,32 @@
 			path = PictureViewModel;
 			sourceTree = "<group>";
 		};
+		66DF825C2838236400D44042 /* Statistics */ = {
+			isa = PBXGroup;
+			children = (
+				66DF8262283823E800D44042 /* Views */,
+				66DF825F283823B000D44042 /* Downloads */,
+				66DF825D2838238000D44042 /* PhotoStatisticsDTO.swift */,
+			);
+			path = Statistics;
+			sourceTree = "<group>";
+		};
+		66DF825F283823B000D44042 /* Downloads */ = {
+			isa = PBXGroup;
+			children = (
+				66DF8260283823D100D44042 /* PhotoStatisticsDownloadsDTO.swift */,
+			);
+			path = Downloads;
+			sourceTree = "<group>";
+		};
+		66DF8262283823E800D44042 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				66DF8263283823FC00D44042 /* PhotoStatisticsViewsDTO.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1002,6 +1035,7 @@
 				665B70832837D488001779A1 /* TodayViewModelOutput.swift in Sources */,
 				665B706F2837B8B5001779A1 /* PhotosRepository.swift in Sources */,
 				665B707F2837D344001779A1 /* TodayFactory.swift in Sources */,
+				66DF825E2838238000D44042 /* PhotoStatisticsDTO.swift in Sources */,
 				665B70182836901C001779A1 /* TodayCollectionViewHeaderSectionSupplementaryView.swift in Sources */,
 				665B70412837950B001779A1 /* PhotoEntity.swift in Sources */,
 				665B70352837836E001779A1 /* PhotoDTO.swift in Sources */,
@@ -1027,7 +1061,9 @@
 				665B701B2836949F001779A1 /* TodayCollectionViewHeaderSectionSupplementaryViewModel.swift in Sources */,
 				665B706228379B7E001779A1 /* HTTPRequest.swift in Sources */,
 				665B70882837D994001779A1 /* TodayViewEvent.swift in Sources */,
+				66DF8261283823D100D44042 /* PhotoStatisticsDownloadsDTO.swift in Sources */,
 				665B706028379B7E001779A1 /* HTTPEndPoint.swift in Sources */,
+				66DF8264283823FC00D44042 /* PhotoStatisticsViewsDTO.swift in Sources */,
 				665B701028368D9E001779A1 /* PhotoViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
