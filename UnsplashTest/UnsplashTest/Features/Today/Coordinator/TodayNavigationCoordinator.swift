@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol TodayNavigationCoordinatorDelegate: AnyObject {
+    func userDidSelectPhoto(withId photoId: String, forUser userId: String)
+}
+
 final class TodayNavigationCoordinator: NavigationCoordinator {
     private(set) var children: [Coordinator] = []
     private let dependencies: TodayDependencies
@@ -19,9 +23,36 @@ final class TodayNavigationCoordinator: NavigationCoordinator {
     }
 
     func start() {
-        let todayFactory = TodayFactory(todayDependencies: self.dependencies)
+        let todayFactory = TodayFactory(
+            todayDependencies: self.dependencies,
+            coordinatorDelegate: self
+        )
         let todayViewController = TodayViewController(factory: todayFactory)
         self.navigationController.setNavigationBarHidden(true, animated: false)
         self.navigationController.setViewControllers([todayViewController], animated: true)
+    }
+
+    private func startTodayDetails(with dependencies: TodayDetailsDependencies) {
+        let todayDetailsCoordinator = TodayDetailsCoordinator(
+            navigationController: self.navigationController,
+            todayDetailsDependencies: dependencies
+        )
+        todayDetailsCoordinator.start()
+        self.children.append(todayDetailsCoordinator)
+    }
+}
+
+extension TodayNavigationCoordinator: TodayNavigationCoordinatorDelegate {
+
+    func userDidSelectPhoto(
+        withId photoId: String,
+        forUser userId: String
+    ) {
+        let todayDetailsDependencies = TodayDetailsDependencies(
+            userId: userId,
+            photoId: photoId,
+            photoStatisticsRepository: self.dependencies.photoStatisticsRepository
+        )
+        self.startTodayDetails(with: todayDetailsDependencies)
     }
 }

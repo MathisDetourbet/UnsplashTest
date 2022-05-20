@@ -22,6 +22,7 @@ final class TodayDetailsCoordinator: NavigationCoordinator {
     func start() {
         let todayDetailsFactory = TodayDetailsFactory(todayDetailsDependencies: self.dependencies)
         let todayDetailsViewController = TodayDetailsViewController(factory: todayDetailsFactory)
+        todayDetailsViewController.hidesBottomBarWhenPushed = true
         self.navigationController.pushViewController(todayDetailsViewController, animated: true)
     }
 }

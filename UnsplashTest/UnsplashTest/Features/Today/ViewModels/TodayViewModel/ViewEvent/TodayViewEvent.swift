@@ -8,6 +8,10 @@
 import Foundation
 
 enum TodayViewEvent {
-    // The view is setup
+    /// The view is setup
     case viewDidLoad
+    /// The user did select a photo.
+    case didSelectPhoto(indexPath: IndexPath)
 }
+
+extension TodayViewEvent: Equatable {}

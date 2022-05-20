@@ -6,6 +6,7 @@
 //
 
 import Combine
+import CoreImage
 
 protocol TodayViewModelable: TableOrCollectionViewModel {
     typealias Input = TodayViewModelInputable
@@ -16,7 +17,8 @@ protocol TodayViewModelable: TableOrCollectionViewModel {
 }
 
 final class TodayViewModel: TodayViewModelable {
-    private(set) var viewableList: [PhotoCellViewModelable]
+    private var photosViewModel: [PhotoViewModel]
+    var viewableList: [PhotoCellViewModelable] { self.photosViewModel }
     private let fetchTodayFeedUseCase: FetchTodayFeedUseCaseProtocol
     private var subscriptions: Set<AnyCancellable> = []
 
@@ -24,7 +26,7 @@ final class TodayViewModel: TodayViewModelable {
 
     init(input: Input) {
         self.fetchTodayFeedUseCase = input.fetchTodayFeedUseCase
-        self.viewableList = []
+        self.photosViewModel = []
 
         let photosViewModelPublisher = input.viewEventPublisher
             .filter { $0 == .viewDidLoad }
@@ -52,9 +54,42 @@ final class TodayViewModel: TodayViewModelable {
 
         photosViewModelPublisher
             .sink(receiveCompletion: { _ in }) { [weak self] photosViewModel in
-                self?.viewableList = photosViewModel
+                self?.photosViewModel = photosViewModel
             }
             .store(in: &self.subscriptions)
+
+        input.viewEventPublisher
+            .map { [weak self] viewEvent -> TodayUserSelection? in
+                guard let self = self else {
+                    return nil
+                }
+                switch viewEvent {
+                case .didSelectPhoto(let indexPath):
+                    return Self.userSelection(at: indexPath, in: self.photosViewModel)
+                default:
+                    return nil
+                }
+            }
+            .sink { [input] userSelection in
+                guard let userSelection = userSelection else {
+                    return
+                }
+                input.coordinatorDelegate?.userDidSelectPhoto(
+                    withId: userSelection.photoId,
+                    forUser: userSelection.userId
+                )
+            }
+            .store(in: &self.subscriptions)
+    }
+
+    private static func userSelection(
+        at indexPath: IndexPath,
+        in photosViewModel: [PhotoViewModel]
+    ) -> TodayUserSelection? {
+        let selectedPhoto = photosViewModel[indexPath.item]
+        let photoId = selectedPhoto.photoId
+        let userId = selectedPhoto.userId
+        return (userId, photoId)
     }
 }
 

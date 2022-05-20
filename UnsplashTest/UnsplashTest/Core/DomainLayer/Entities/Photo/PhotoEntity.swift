@@ -8,6 +8,7 @@
 import Foundation
 
 struct PhotoEntity {
+    let id: String
     let description: String?
     let imageURL: URL?
     let userEntity: UserEntity
@@ -17,6 +18,7 @@ struct PhotoEntity {
 extension PhotoEntity: EntityInitializable {
 
     init(from dto: PhotoDTO) {
+        self.id = dto.id
         self.description = dto.description
         self.imageURL = URL(string: dto.urlsDTO.regular)
         self.userEntity = UserEntity(from: dto.userDTO)

@@ -9,7 +9,6 @@ import UIKit
 import Combine
 
 final class TodayViewController: UIViewController {
-
     private lazy var photosCollectionView = self.createCollectionView()
     private let viewModel: TodayViewModel
     private let viewEventSubject: PassthroughSubject<TodayViewEvent, Never>
@@ -30,12 +29,15 @@ final class TodayViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .white
 
-        self.setupCollectionView()
+        self.buildUI()
         self.bindToViewModelOutput()
-
         self.viewEventSubject.send(.viewDidLoad)
+    }
+
+    private func buildUI() {
+        self.view.backgroundColor = .white
+        self.setupCollectionView()
     }
 
     private func setupCollectionView() {
@@ -117,8 +119,11 @@ extension TodayViewController: UICollectionViewDataSource {
 // MARK: - Collection view delegate
 extension TodayViewController: UICollectionViewDelegate {
 
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // TODO: To implement
+    func collectionView(
+        _ _: UICollectionView,
+        didSelectItemAt indexPath: IndexPath
+    ) {
+        self.viewEventSubject.send(.didSelectPhoto(indexPath: indexPath))
     }
 }
 

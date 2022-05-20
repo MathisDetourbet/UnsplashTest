@@ -15,9 +15,14 @@ protocol TodayFactoryProtocol {
 
 final class TodayFactory: TodayFactoryProtocol {
     private let todayDependencies: TodayDependencies
+    private weak var coordinatorDelegate: TodayNavigationCoordinatorDelegate?
 
-    init(todayDependencies: TodayDependencies) {
+    init(
+        todayDependencies: TodayDependencies,
+        coordinatorDelegate: TodayNavigationCoordinatorDelegate
+    ) {
         self.todayDependencies = todayDependencies
+        self.coordinatorDelegate = coordinatorDelegate
     }
 
     func createViewModel(
@@ -28,7 +33,8 @@ final class TodayFactory: TodayFactoryProtocol {
         )
         let input = TodayViewModelInput(
             fetchTodayFeedUseCase: fetchTodayUseCase,
-            viewEventPublisher: viewEventPublisher
+            viewEventPublisher: viewEventPublisher,
+            coordinatorDelegate: self.coordinatorDelegate
         )
         return TodayViewModel(input: input)
     }

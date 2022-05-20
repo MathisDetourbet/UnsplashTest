@@ -45,8 +45,13 @@ private extension RootCoordinator {
             httpService: self.appDependencies.httpService,
             httpConfiguration: self.appDependencies.httpConfiguration
         )
+        let photosStatisticsRepository = PhotoStatisticsRepository(
+            httpService: self.appDependencies.httpService,
+            httpConfiguration: self.appDependencies.httpConfiguration
+        )
         let todayDependencies = TodayDependencies(
-            photosRepository: photosRepository
+            photosRepository: photosRepository,
+            photoStatisticsRepository: photosStatisticsRepository
         )
         let todayCoordinator = TodayNavigationCoordinator(
             navigationController: navigationController,

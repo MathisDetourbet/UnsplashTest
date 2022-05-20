@@ -9,4 +9,5 @@ import Foundation
 
 struct TodayDependencies {
     let photosRepository: PhotosRepositoryProtocol
+    let photoStatisticsRepository: PhotoStatisticsRepositoryProtocol
 }
