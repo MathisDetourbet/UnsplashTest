@@ -43,6 +43,7 @@
 		665B706A2837B43B001779A1 /* UnsplashAPIConfiguration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 665B70692837B43B001779A1 /* UnsplashAPIConfiguration.plist */; };
 		665B706F2837B8B5001779A1 /* PhotosRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665B706E2837B8B5001779A1 /* PhotosRepository.swift */; };
 		665B70722837B934001779A1 /* RepositoryError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665B70712837B934001779A1 /* RepositoryError.swift */; };
+		665B70762837CAE8001779A1 /* FetchTodayFeedUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665B70752837CAE8001779A1 /* FetchTodayFeedUseCase.swift */; };
 		667CCBCE28363EE70013879A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667CCBCD28363EE70013879A /* AppDelegate.swift */; };
 		667CCBD728363EE90013879A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 667CCBD628363EE90013879A /* Assets.xcassets */; };
 		667CCBDA28363EE90013879A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 667CCBD828363EE90013879A /* LaunchScreen.storyboard */; };
@@ -109,6 +110,7 @@
 		665B70692837B43B001779A1 /* UnsplashAPIConfiguration.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = UnsplashAPIConfiguration.plist; sourceTree = "<group>"; };
 		665B706E2837B8B5001779A1 /* PhotosRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosRepository.swift; sourceTree = "<group>"; };
 		665B70712837B934001779A1 /* RepositoryError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryError.swift; sourceTree = "<group>"; };
+		665B70752837CAE8001779A1 /* FetchTodayFeedUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchTodayFeedUseCase.swift; sourceTree = "<group>"; };
 		667CCBCA28363EE70013879A /* UnsplashTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UnsplashTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		667CCBCD28363EE70013879A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		667CCBD628363EE90013879A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -478,6 +480,14 @@
 			path = Error;
 			sourceTree = "<group>";
 		};
+		665B70742837CAC2001779A1 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				665B70752837CAE8001779A1 /* FetchTodayFeedUseCase.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
 		667CCBC128363EE70013879A = {
 			isa = PBXGroup;
 			children = (
@@ -585,6 +595,7 @@
 		667CCC032836418E0013879A /* Today */ = {
 			isa = PBXGroup;
 			children = (
+				665B70742837CAC2001779A1 /* UseCases */,
 				665B701328368FDB001779A1 /* Views */,
 				665B70022836720E001779A1 /* Coordinator */,
 				665B7001283671F3001779A1 /* ViewModels */,
@@ -791,6 +802,7 @@
 				665B7000283671CB001779A1 /* TodayViewController.swift in Sources */,
 				665B703B28378853001779A1 /* ProfileImageDTO.swift in Sources */,
 				667CCC12283657290013879A /* Coordinator.swift in Sources */,
+				665B70762837CAE8001779A1 /* FetchTodayFeedUseCase.swift in Sources */,
 				665B704528379614001779A1 /* EntityInitializable.swift in Sources */,
 				665B706628379B7E001779A1 /* HTTPService.swift in Sources */,
 				665B700928368A15001779A1 /* TodayViewModel.swift in Sources */,
