@@ -73,7 +73,6 @@ private extension HTTPService {
     private static let authorizationHeaderField = "Authorization"
 
     private func injectAuthorizationHeaders(in urlRequest: inout URLRequest) {
-        // TODO: use api key fetched from info.plist file
         urlRequest.addValue(apiAccessKey, forHTTPHeaderField: Self.authorizationHeaderField)
     }
 
