@@ -32,12 +32,16 @@ final class PhotosRepository: PhotosRepositoryProtocol {
             parameters: nil,
             isPublic: true
         )
-        return self.httpService
-            .send(request, decodedType: [PhotoDTO].self)
-            .map { photoDTO in
-                return photoDTO.map(PhotoEntity.init)
-            }
-            .mapError(RepositoryError.init)
-            .eraseToAnyPublisher()
+        return Deferred {
+            return self.httpService
+                .send(request, decodedType: [PhotoDTO].self)
+                .map { photoDTO in
+                    return photoDTO.map(PhotoEntity.init)
+                }
+                .mapError(RepositoryError.init)
+                .first()
+                .eraseToAnyPublisher()
+        }
+        .eraseToAnyPublisher()
     }
 }
