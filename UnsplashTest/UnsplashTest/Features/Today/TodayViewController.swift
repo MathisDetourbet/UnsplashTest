@@ -12,7 +12,7 @@ final class TodayViewController: UIViewController {
 
     private lazy var photosCollectionView = self.createCollectionView()
     private let viewModel: TodayViewModel
-    private let viewEventInputSubject: PassthroughSubject<TodayViewEvent, Never>
+    private let viewEventSubject: PassthroughSubject<TodayViewEvent, Never>
     private var subscriptions: Set<AnyCancellable> = []
 
     init(factory: TodayFactoryProtocol) {
@@ -20,7 +20,7 @@ final class TodayViewController: UIViewController {
         self.viewModel = factory.createViewModel(
             viewEventInputPublisher: viewEventInputSubject.eraseToAnyPublisher()
         )
-        self.viewEventInputSubject = viewEventInputSubject
+        self.viewEventSubject = viewEventInputSubject
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -35,7 +35,7 @@ final class TodayViewController: UIViewController {
         self.setupCollectionView()
         self.bindToViewModelOutput()
 
-        self.viewEventInputSubject.send(.viewDidLoad)
+        self.viewEventSubject.send(.viewDidLoad)
     }
 
     private func setupCollectionView() {
