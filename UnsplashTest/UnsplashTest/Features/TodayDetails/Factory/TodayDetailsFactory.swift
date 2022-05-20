@@ -14,24 +14,31 @@ protocol TodayDetailsFactoryProtocol {
 }
 
 final class TodayDetailsFactory: TodayDetailsFactoryProtocol {
-    let userId: String
-    let photoId: String
+    private let todayDetailsDependencies: TodayDetailsDependencies
+    private let userId: String
+    private let photoId: String
 
     init(
         userId: String,
-        photoId: String
+        photoId: String,
+        todayDetailsDependencies: TodayDetailsDependencies
     ) {
         self.userId = userId
         self.photoId = photoId
+        self.todayDetailsDependencies = todayDetailsDependencies
     }
 
     func createViewModel(
         viewEventPublisher: AnyPublisher<TodayDetailsViewEvent, Never>
     ) -> TodayDetailsViewModel {
+        let fetchPhotoStatisticsUseCase = FetchPhotoStatisticsUseCase(
+            photoStatisticsRepository: self.todayDetailsDependencies.photoStatisticsRepository
+        )
         let input = TodayDetailsViewModelInput(
             userId: self.userId,
             photoId: self.photoId,
-            viewEventPublisher: viewEventPublisher
+            viewEventPublisher: viewEventPublisher,
+            fetchPhotoStatisticsUseCase: fetchPhotoStatisticsUseCase
         )
         return .init(input: input)
     }

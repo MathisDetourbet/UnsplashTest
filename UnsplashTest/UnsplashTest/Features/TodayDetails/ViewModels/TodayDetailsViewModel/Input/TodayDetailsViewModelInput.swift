@@ -11,10 +11,12 @@ protocol TodayDetailsViewModelInputable {
     var userId: String { get }
     var photoId: String { get }
     var viewEventPublisher: AnyPublisher<TodayDetailsViewEvent, Never> { get }
+    var fetchPhotoStatisticsUseCase: FetchPhotoStatisticsUseCaseProtocol { get }
 }
 
 struct TodayDetailsViewModelInput: TodayDetailsViewModelInputable {
     let userId: String
     let photoId: String
     let viewEventPublisher: AnyPublisher<TodayDetailsViewEvent, Never>
+    let fetchPhotoStatisticsUseCase: FetchPhotoStatisticsUseCaseProtocol
 }
