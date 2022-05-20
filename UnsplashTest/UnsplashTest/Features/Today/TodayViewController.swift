@@ -70,7 +70,9 @@ private extension TodayViewController {
             .reloadPhotosPublisher
             .receive(on: DispatchQueue.main)
             .sink { [weak self] _ in
-                self?.photosCollectionView.reloadData()
+                self?.photosCollectionView.performBatchUpdates({
+                    self?.photosCollectionView.reloadSections(IndexSet(integer: 0))
+                })
             }
             .store(in: &self.subscriptions)
     }
