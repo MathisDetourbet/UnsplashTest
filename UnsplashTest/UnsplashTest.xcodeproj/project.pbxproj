@@ -74,6 +74,7 @@
 		66DF8264283823FC00D44042 /* PhotoStatisticsViewsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DF8263283823FC00D44042 /* PhotoStatisticsViewsDTO.swift */; };
 		66DF82672838249000D44042 /* PhotoStatisticsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DF82662838249000D44042 /* PhotoStatisticsEntity.swift */; };
 		66DF826A2838252B00D44042 /* PhotoStatisticsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DF82692838252B00D44042 /* PhotoStatisticsRepository.swift */; };
+		66DF826D2838269800D44042 /* FetchPhotoStatisticsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DF826C2838269800D44042 /* FetchPhotoStatisticsUseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -165,6 +166,7 @@
 		66DF8263283823FC00D44042 /* PhotoStatisticsViewsDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoStatisticsViewsDTO.swift; sourceTree = "<group>"; };
 		66DF82662838249000D44042 /* PhotoStatisticsEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoStatisticsEntity.swift; sourceTree = "<group>"; };
 		66DF82692838252B00D44042 /* PhotoStatisticsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoStatisticsRepository.swift; sourceTree = "<group>"; };
+		66DF826C2838269800D44042 /* FetchPhotoStatisticsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhotoStatisticsUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -704,6 +706,7 @@
 		667CCC04283641940013879A /* TodayDetails */ = {
 			isa = PBXGroup;
 			children = (
+				66DF826B2838268700D44042 /* UseCases */,
 				66DF824E28381F9300D44042 /* ViewModels */,
 				66DF82402838085C00D44042 /* Views */,
 				66DF823E2838070900D44042 /* TodayDetailsViewController.swift */,
@@ -901,6 +904,14 @@
 			path = Statistics;
 			sourceTree = "<group>";
 		};
+		66DF826B2838268700D44042 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				66DF826C2838269800D44042 /* FetchPhotoStatisticsUseCase.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1042,6 +1053,7 @@
 				665B703B28378853001779A1 /* ProfileImageDTO.swift in Sources */,
 				667CCC12283657290013879A /* Coordinator.swift in Sources */,
 				665B70762837CAE8001779A1 /* FetchTodayFeedUseCase.swift in Sources */,
+				66DF826D2838269800D44042 /* FetchPhotoStatisticsUseCase.swift in Sources */,
 				665B704528379614001779A1 /* EntityInitializable.swift in Sources */,
 				665B706628379B7E001779A1 /* HTTPService.swift in Sources */,
 				665B700928368A15001779A1 /* TodayViewModel.swift in Sources */,
