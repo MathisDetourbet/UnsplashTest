@@ -13,5 +13,5 @@ protocol Configuration {
 }
 
 extension Configuration {
-    var urlScheme: URL? { .init(string: "\(netProtocol)\(domain)") }
+    var urlScheme: URL? { .init(string: "\(self.netProtocol)\(self.domain)") }
 }
