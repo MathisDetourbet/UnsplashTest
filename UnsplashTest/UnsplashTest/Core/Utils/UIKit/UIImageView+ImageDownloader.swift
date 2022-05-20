@@ -9,13 +9,18 @@ import UIKit
 import Combine
 
 protocol ImageViewDownloader {
-    func fetchImage(at url: URL)
+    func fetchImage(at url: URL?)
     func cancelImageDownload()
 }
 
 extension UIImageView: ImageViewDownloader {
 
-    func fetchImage(at url: URL) {
+    func fetchImage(at url: URL?) {
+        guard let url = url else {
+            print("[Error]: Image url is nil")
+            return
+        }
+
         self.imageDownloadSubscription = ImageDownloader.shared.download(from: url)
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { completion in
@@ -23,7 +28,7 @@ extension UIImageView: ImageViewDownloader {
                 case .failure(let error):
                     print(error)
                 case .finished:
-                    print("Image has been fetched")
+                    print("[Error]: Image has been fetched")
                 }
             },
             receiveValue: { [weak self] image in

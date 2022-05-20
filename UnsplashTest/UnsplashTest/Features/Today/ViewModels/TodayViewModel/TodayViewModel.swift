@@ -18,6 +18,7 @@ protocol TodayViewModelable: TableOrCollectionViewModel {
 final class TodayViewModel: TodayViewModelable {
     private(set) var viewableList: [PhotoCellViewModelable]
     private let fetchTodayFeedUseCase: FetchTodayFeedUseCaseProtocol
+    private var subscriptions: Set<AnyCancellable> = []
 
     let output: Output
 
@@ -25,18 +26,34 @@ final class TodayViewModel: TodayViewModelable {
         self.fetchTodayFeedUseCase = input.fetchTodayFeedUseCase
         self.viewableList = []
 
-        let reloadPhotosPublisher = input.viewEventPublisher
-            .map { viewEvent -> Void in
-                switch viewEvent {
-                case .viewDidLoad:
-                    return ()
-                }
+        let photosViewModelPublisher = input.viewEventPublisher
+            .filter { $0 == .viewDidLoad }
+            .setFailureType(to: FetchTodayFeedUseCase.FetchError.self)
+            .flatMap { _ -> AnyPublisher<[PhotoEntity], FetchTodayFeedUseCase.FetchError> in
+                return input.fetchTodayFeedUseCase.execute()
             }
+            .map { photosEntity in
+                return photosEntity.map(PhotoViewModel.init)
+            }
+
+        let reloadPhotosPublisher = photosViewModelPublisher
+            .map { _ in () }
+            .catch { _ in
+                Just(()).eraseToAnyPublisher()
+            }
+            .share()
             .eraseToAnyPublisher()
 
         self.output = TodayViewModelOutput(
             reloadPhotosPublisher: reloadPhotosPublisher,
             headerViewModel: TodayCollectionViewHeaderSectionSupplementaryViewModel()
         )
+
+        photosViewModelPublisher
+            .sink(receiveCompletion: { _ in }) { [weak self] photosViewModel in
+                self?.viewableList = photosViewModel
+            }
+            .store(in: &self.subscriptions)
     }
 }
+

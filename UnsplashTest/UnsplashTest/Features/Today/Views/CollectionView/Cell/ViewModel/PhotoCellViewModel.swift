@@ -8,9 +8,9 @@
 import UIKit
 
 protocol PhotoCellViewModelable {
-    var backgroundImageURL: URL { get }
+    var backgroundImageURL: URL? { get }
     var description: String? { get }
-    var userImageURL: URL { get }
+    var userImageURL: URL? { get }
     var username: String { get }
     var likesCountString: String { get }
 }
