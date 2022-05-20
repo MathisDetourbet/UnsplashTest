@@ -258,7 +258,6 @@
 		665B703128378352001779A1 /* DataLayer */ = {
 			isa = PBXGroup;
 			children = (
-				665B703F283794F2001779A1 /* Entities */,
 				665B703228378358001779A1 /* DTO */,
 			);
 			path = DataLayer;
@@ -340,6 +339,14 @@
 			path = User;
 			sourceTree = "<group>";
 		};
+		665B704928379A97001779A1 /* DomainLayer */ = {
+			isa = PBXGroup;
+			children = (
+				665B703F283794F2001779A1 /* Entities */,
+			);
+			path = DomainLayer;
+			sourceTree = "<group>";
+		};
 		667CCBC128363EE70013879A = {
 			isa = PBXGroup;
 			children = (
@@ -400,6 +407,7 @@
 		667CCBFE2836414F0013879A /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				665B704928379A97001779A1 /* DomainLayer */,
 				665B703128378352001779A1 /* DataLayer */,
 				665B700B28368A9A001779A1 /* Utils */,
 				667CCC06283641AA0013879A /* NavigationLayer */,
