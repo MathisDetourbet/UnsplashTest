@@ -78,10 +78,10 @@ final class TodayDetailsCollectionViewFooterSectionSupplementaryView: UICollecti
         self.addSubview(self.containerVStackView)
 
         let viewsContentStackView = self.createViewsContentStackView()
-        let downloadContentStackView = self.createDownloadContentStackView()
+        let downloadsContentStackView = self.createDownloadsContentStackView()
 
         self.containerVStackView.addArrangedSubview(viewsContentStackView)
-        self.containerVStackView.addArrangedSubview(downloadContentStackView)
+        self.containerVStackView.addArrangedSubview(downloadsContentStackView)
 
         NSLayoutConstraint.activate([
             self.containerVStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 5),
@@ -100,15 +100,17 @@ final class TodayDetailsCollectionViewFooterSectionSupplementaryView: UICollecti
 
         let iconImage = UIImage(named: "eyeIcon")
         let iconImageView = UIImageView(image: iconImage)
-        iconImageView.contentMode = .scaleAspectFill
+        iconImageView.contentMode = .scaleAspectFit
+        iconImageView.heightAnchor.constraint(equalToConstant: 46).isActive = true
+        iconImageView.widthAnchor.constraint(equalTo: iconImageView.heightAnchor).isActive = true
 
         hStackView.addArrangedSubview(iconImageView)
-        hStackView.addArrangedSubview(self.downloadCountLabel)
+        hStackView.addArrangedSubview(self.viewsCountLabel)
 
         return hStackView
     }
 
-    private func createDownloadContentStackView() -> UIStackView {
+    private func createDownloadsContentStackView() -> UIStackView {
         let hStackView = UIStackView()
         hStackView.distribution = .fill
         hStackView.alignment = .leading
@@ -117,11 +119,12 @@ final class TodayDetailsCollectionViewFooterSectionSupplementaryView: UICollecti
 
         let iconImage = UIImage(named: "download")
         let iconImageView = UIImageView(image: iconImage)
-        iconImageView.contentMode = .scaleAspectFill
+        iconImageView.contentMode = .scaleAspectFit
+        iconImageView.heightAnchor.constraint(equalToConstant: 46).isActive = true
+        iconImageView.widthAnchor.constraint(equalTo: iconImageView.heightAnchor).isActive = true
 
         hStackView.addArrangedSubview(iconImageView)
         hStackView.addArrangedSubview(self.downloadCountLabel)
-        self.containerVStackView.addSubview(hStackView)
 
         return hStackView
     }

@@ -35,6 +35,7 @@ final class TodayDetailsViewController: UIViewController {
     }
 
     private func buildUI() {
+        self.view.backgroundColor = .white
         self.setupCollectionView()
     }
 
