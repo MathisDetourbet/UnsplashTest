@@ -13,4 +13,12 @@ struct PhotoDTO: Decodable {
     let likes: Int
     let userDTO: UserDTO
     let urlsDTO: URLsDTO
+
+    enum CodingKeys: String, CodingKey {
+        case id
+        case description
+        case likes
+        case userDTO = "user"
+        case urlsDTO = "urls"
+    }
 }
