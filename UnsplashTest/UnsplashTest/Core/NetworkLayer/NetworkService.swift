@@ -9,5 +9,5 @@ import Foundation
 import Combine
 
 protocol NetworkService {
-    func sendRequest<T: Decodable>(_ request: NetworkRequest) -> AnyPublisher<T, HTTPError>
+    func send<T: Decodable>(_ request: NetworkRequest, decodedType: T.Type) -> AnyPublisher<T, HTTPError>
 }

@@ -13,5 +13,11 @@ protocol Configuration {
 }
 
 extension Configuration {
-    var urlScheme: URL? { .init(string: "\(self.netProtocol)\(self.domain)") }
+
+    var urlScheme: URL {
+        guard let urlScheme = URL(string: "\(self.netProtocol)\(self.domain)") else {
+            fatalError("URL scheme is nil. This should not happen.")
+        }
+        return urlScheme
+    }
 }

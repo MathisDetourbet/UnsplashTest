@@ -12,7 +12,7 @@ final class HTTPService: NetworkService {
     private static let successCodeRange = 200..<300
     private let session = URLSession(configuration: .default)
 
-    func sendRequest<T: Decodable>(_ httpRequest: NetworkRequest) -> AnyPublisher<T, HTTPError> {
+    func send<T: Decodable>(_ httpRequest: NetworkRequest, decodedType _: T.Type) -> AnyPublisher<T, HTTPError> {
         guard let httpRequest = httpRequest as? HTTPRequest else {
             return Fail(
                 outputType: T.self,
