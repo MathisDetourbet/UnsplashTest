@@ -9,48 +9,33 @@ import UIKit
 import Combine
 
 protocol ImageViewDownloader {
-    func fetchImage(at url: URL?)
-    func cancelImageDownload()
+    func fetchImage(at url: URL?, storeIn subscriptions: inout Set<AnyCancellable>)
 }
 
 extension UIImageView: ImageViewDownloader {
 
-    func fetchImage(at url: URL?) {
+    func fetchImage(
+        at url: URL?,
+        storeIn subscriptions: inout Set<AnyCancellable>
+    ) {
         guard let url = url else {
             print("[Error]: Image url is nil")
             return
         }
 
-        self.imageDownloadSubscription = ImageDownloader.shared.download(from: url)
+        ImageDownloader.shared.download(at: url)
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .failure(let error):
                     print(error)
                 case .finished:
-                    print("[Error]: Image has been fetched")
+                    break
                 }
             },
             receiveValue: { [weak self] image in
                 self?.image = image
             })
-    }
-
-    func cancelImageDownload() {
-        self.imageDownloadSubscription?.cancel()
-        self.imageDownloadSubscription = nil
-    }
-}
-
-// MARK: - Image download subscription
-fileprivate extension UIImageView {
-
-    struct SubscriptionStoredProperty {
-        fileprivate static var _imageDownloadSubscription: AnyCancellable?
-    }
-
-    var imageDownloadSubscription: AnyCancellable? {
-        get { SubscriptionStoredProperty._imageDownloadSubscription }
-        set { SubscriptionStoredProperty._imageDownloadSubscription = newValue }
+            .store(in: &subscriptions)
     }
 }

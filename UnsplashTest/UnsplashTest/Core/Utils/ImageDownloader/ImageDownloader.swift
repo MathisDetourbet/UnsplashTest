@@ -26,7 +26,7 @@ final class ImageDownloader {
     private var cache = ImageCache()
     private let successCodeRange = 200..<300
 
-    func download(from url: URL) -> AnyPublisher<UIImage?, DownloadError> {
+    func download(at url: URL) -> AnyPublisher<UIImage, DownloadError> {
         if let cachedImage = self.cache.retrieveImageFromCache(at: url) {
             return Just(cachedImage)
                 .setFailureType(to: DownloadError.self)

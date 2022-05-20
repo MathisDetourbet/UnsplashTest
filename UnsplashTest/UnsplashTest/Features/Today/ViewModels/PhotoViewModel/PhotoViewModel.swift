@@ -20,6 +20,6 @@ struct PhotoViewModel: PhotoCellViewModelable {
         self.userImageURL = entity.userEntity.profileImageEntity.smallURL
         self.description = entity.description
         self.username = entity.userEntity.username
-        self.likesCountString = ""
+        self.likesCountString = "\(entity.likesCount) likes"
     }
 }

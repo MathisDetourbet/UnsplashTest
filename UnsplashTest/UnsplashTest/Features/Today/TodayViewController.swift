@@ -46,6 +46,7 @@ final class TodayViewController: UIViewController {
             forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
             withReuseIdentifier: TodayCollectionViewHeaderSectionSupplementaryView.reuseIdentifier
         )
+        self.photosCollectionView.register(cellType: PhotoCollectionViewCell.self)
         self.photosCollectionView.translatesAutoresizingMaskIntoConstraints = false
         
         self.view.addSubview(self.photosCollectionView)
@@ -126,7 +127,7 @@ private extension TodayViewController {
     private enum CollectionViewLayoutProperties {
         static let numberOfItemByRow: Int = 1
         static let cellAspectRatio: CGFloat = 533/655
-        static let minimumLineSpacing: CGFloat = 50.0
+        static let minimumLineSpacing: CGFloat = 30.0
         static let collectionHorizontalInset: CGFloat = 5.0
         static let collectionViewMargins: CGFloat = 5.0
     }
