@@ -10,7 +10,6 @@ import Combine
 
 struct PhotoViewModel: PhotoCellViewModelable {
     let photoId: String
-    let userId: String
     let backgroundImageURL: URL?
     let userImageURL: URL?
     let description: String?
@@ -19,7 +18,6 @@ struct PhotoViewModel: PhotoCellViewModelable {
 
     init(entity: PhotoEntity) {
         self.photoId = entity.id
-        self.userId = entity.userEntity.id
         self.backgroundImageURL = entity.imageURL
         self.userImageURL = entity.userEntity.profileImageEntity.smallURL
         self.description = entity.description

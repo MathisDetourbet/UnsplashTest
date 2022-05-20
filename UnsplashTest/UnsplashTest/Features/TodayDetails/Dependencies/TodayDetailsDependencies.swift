@@ -8,7 +8,7 @@
 import Foundation
 
 struct TodayDetailsDependencies {
-    let userId: String
+    let username: String
     let photoId: String
     let photoStatisticsRepository: PhotoStatisticsRepositoryProtocol
 }

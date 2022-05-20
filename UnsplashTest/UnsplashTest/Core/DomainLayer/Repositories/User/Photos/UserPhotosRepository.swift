@@ -32,7 +32,7 @@ final class UserPhotosRepository: UserPhotosRepositoryProtocol {
             parameters: nil,
             isPublic: true
         )
-        
+
         return Deferred {
             return self.httpService
                 .send(request, decodedType: [PhotoDTO].self)

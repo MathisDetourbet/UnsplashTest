@@ -15,7 +15,7 @@ struct PhotoStatisticsEntity {
 extension PhotoStatisticsEntity: EntityInitializable {
 
     init(from dto: PhotoStatisticsDTO) {
-        self.totalDownloads = dto.downloads.total
-        self.totalViews = dto.views.total
+        self.totalDownloads = dto.downloadsDTO.total
+        self.totalViews = dto.viewsDTO.total
     }
 }

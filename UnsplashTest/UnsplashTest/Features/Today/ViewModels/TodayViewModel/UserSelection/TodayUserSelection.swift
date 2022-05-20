@@ -7,4 +7,4 @@
 
 import Foundation
 
-typealias TodayUserSelection = (userId: String, photoId: String)
+typealias TodayUserSelection = (username: String, photoId: String)

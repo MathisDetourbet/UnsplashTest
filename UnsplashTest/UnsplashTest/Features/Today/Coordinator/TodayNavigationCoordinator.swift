@@ -8,7 +8,7 @@
 import UIKit
 
 protocol TodayNavigationCoordinatorDelegate: AnyObject {
-    func userDidSelectPhoto(withId photoId: String, forUser userId: String)
+    func userDidSelectPhoto(withId photoId: String, forUsername username: String)
 }
 
 final class TodayNavigationCoordinator: NavigationCoordinator {
@@ -46,10 +46,10 @@ extension TodayNavigationCoordinator: TodayNavigationCoordinatorDelegate {
 
     func userDidSelectPhoto(
         withId photoId: String,
-        forUser userId: String
+        forUsername username: String
     ) {
         let todayDetailsDependencies = TodayDetailsDependencies(
-            userId: userId,
+            username: username,
             photoId: photoId,
             photoStatisticsRepository: self.dependencies.photoStatisticsRepository
         )

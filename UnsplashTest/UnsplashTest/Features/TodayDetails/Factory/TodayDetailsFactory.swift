@@ -15,13 +15,13 @@ protocol TodayDetailsFactoryProtocol {
 
 final class TodayDetailsFactory: TodayDetailsFactoryProtocol {
     private let todayDetailsDependencies: TodayDetailsDependencies
-    private let userId: String
+    private let username: String
     private let photoId: String
 
     init(
         todayDetailsDependencies: TodayDetailsDependencies
     ) {
-        self.userId = todayDetailsDependencies.userId
+        self.username = todayDetailsDependencies.username
         self.photoId = todayDetailsDependencies.photoId
         self.todayDetailsDependencies = todayDetailsDependencies
     }
@@ -33,7 +33,7 @@ final class TodayDetailsFactory: TodayDetailsFactoryProtocol {
             photoStatisticsRepository: self.todayDetailsDependencies.photoStatisticsRepository
         )
         let input = TodayDetailsViewModelInput(
-            userId: self.userId,
+            username: self.username,
             photoId: self.photoId,
             viewEventPublisher: viewEventPublisher,
             fetchPhotoStatisticsUseCase: fetchPhotoStatisticsUseCase

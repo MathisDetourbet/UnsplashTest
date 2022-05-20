@@ -76,7 +76,7 @@ final class TodayViewModel: TodayViewModelable {
                 }
                 input.coordinatorDelegate?.userDidSelectPhoto(
                     withId: userSelection.photoId,
-                    forUser: userSelection.userId
+                    forUsername: userSelection.username
                 )
             }
             .store(in: &self.subscriptions)
@@ -88,8 +88,8 @@ final class TodayViewModel: TodayViewModelable {
     ) -> TodayUserSelection? {
         let selectedPhoto = photosViewModel[indexPath.item]
         let photoId = selectedPhoto.photoId
-        let userId = selectedPhoto.userId
-        return (userId, photoId)
+        let username = selectedPhoto.username
+        return (username, photoId)
     }
 }
 
