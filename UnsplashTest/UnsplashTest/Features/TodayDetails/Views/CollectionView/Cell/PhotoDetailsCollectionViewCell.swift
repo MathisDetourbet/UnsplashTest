@@ -35,6 +35,8 @@ final class PhotoDetailsCollectionViewCell: UICollectionViewCell, Reusable {
     }
 
     private func buildUI() {
+        self.contentView.clipsToBounds = true
+        
         self.contentView.addSubview(self.photoDetailImageView)
         NSLayoutConstraint.activate([
             self.photoDetailImageView.topAnchor.constraint(equalTo: self.contentView.topAnchor),

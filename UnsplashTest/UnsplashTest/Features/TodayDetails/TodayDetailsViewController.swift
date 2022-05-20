@@ -180,11 +180,12 @@ private extension TodayDetailsViewController {
 
     private enum CollectionViewLayoutProperties {
         static let numberOfItemByRow: Int = 2
-        static let cellAspectRatio: CGFloat = 1
-        static let minimumLineSpacing: CGFloat = 3
-        static let collectionHorizontalInset: CGFloat = 3.0
+        static let cellAspectRatio: CGFloat = 1.0
+        static let minimumItemsSpacing: CGFloat = 2.0
+        static let minimumLineSpacing: CGFloat = 4.0
+        static let collectionHorizontalInset: CGFloat = 2.0
         static let collectionViewMargins: CGFloat = 3.0
-        static let footerViewHeight: CGFloat = 80.0
+        static let footerViewHeight: CGFloat = 120.0
     }
 
     private func createCollectionView() -> UICollectionView {
@@ -195,11 +196,14 @@ private extension TodayDetailsViewController {
     }
 
     private func createCollectionViewLayout(with frame: CGRect) -> UICollectionViewFlowLayout {
-        let collectionViewWidth = frame.width - 3 * CollectionViewLayoutProperties.collectionViewMargins
+        let itemsHorizontalInset = CollectionViewLayoutProperties.minimumItemsSpacing
+        let collectionViewWidth = frame.width - 2 * CollectionViewLayoutProperties.collectionViewMargins
 
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.itemSize = self.sizeForItem(collectionViewWidth: collectionViewWidth)
         flowLayout.minimumLineSpacing = CollectionViewLayoutProperties.minimumLineSpacing
+        flowLayout.sectionInset = UIEdgeInsets(top: 0.0, left: itemsHorizontalInset, bottom: 0.0, right: itemsHorizontalInset)
+        flowLayout.minimumInteritemSpacing = CollectionViewLayoutProperties.minimumItemsSpacing
         flowLayout.scrollDirection = .vertical
         flowLayout.footerReferenceSize = .init(
             width: collectionViewWidth,

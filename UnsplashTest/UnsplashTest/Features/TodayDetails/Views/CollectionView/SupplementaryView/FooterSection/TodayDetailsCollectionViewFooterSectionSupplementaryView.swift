@@ -15,7 +15,7 @@ final class TodayDetailsCollectionViewFooterSectionSupplementaryView: UICollecti
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .lightGray
-        label.font = UIFont.boldSystemFont(ofSize: 25.0)
+        label.font = UIFont.systemFont(ofSize: 25.0)
         label.setContentCompressionResistancePriority(.defaultHigh, for: .vertical)
         label.setContentHuggingPriority(.defaultHigh, for: .vertical)
         return label
@@ -80,14 +80,18 @@ final class TodayDetailsCollectionViewFooterSectionSupplementaryView: UICollecti
         let viewsContentStackView = self.createViewsContentStackView()
         let downloadsContentStackView = self.createDownloadsContentStackView()
 
+        self.containerVStackView.addArrangedSubview(self.titleLabel)
         self.containerVStackView.addArrangedSubview(viewsContentStackView)
         self.containerVStackView.addArrangedSubview(downloadsContentStackView)
 
+        self.containerVStackView.setCustomSpacing(20, after: self.titleLabel)
+        self.containerVStackView.setCustomSpacing(10, after: viewsContentStackView)
+
         NSLayoutConstraint.activate([
-            self.containerVStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 5),
+            self.containerVStackView.topAnchor.constraint(greaterThanOrEqualTo: self.topAnchor, constant: 5),
             self.containerVStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
             self.containerVStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
-            self.containerVStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -5),
+            self.containerVStackView.bottomAnchor.constraint(lessThanOrEqualTo: self.bottomAnchor, constant: -5),
         ])
     }
 
@@ -101,11 +105,14 @@ final class TodayDetailsCollectionViewFooterSectionSupplementaryView: UICollecti
         let iconImage = UIImage(named: "eyeIcon")
         let iconImageView = UIImageView(image: iconImage)
         iconImageView.contentMode = .scaleAspectFit
-        iconImageView.heightAnchor.constraint(equalToConstant: 46).isActive = true
+        iconImageView.heightAnchor.constraint(equalToConstant: 24).isActive = true
         iconImageView.widthAnchor.constraint(equalTo: iconImageView.heightAnchor).isActive = true
+        iconImageView.translatesAutoresizingMaskIntoConstraints = false
 
         hStackView.addArrangedSubview(iconImageView)
         hStackView.addArrangedSubview(self.viewsCountLabel)
+
+        hStackView.setCustomSpacing(10, after: iconImageView)
 
         return hStackView
     }
@@ -120,11 +127,14 @@ final class TodayDetailsCollectionViewFooterSectionSupplementaryView: UICollecti
         let iconImage = UIImage(named: "download")
         let iconImageView = UIImageView(image: iconImage)
         iconImageView.contentMode = .scaleAspectFit
-        iconImageView.heightAnchor.constraint(equalToConstant: 46).isActive = true
+        iconImageView.heightAnchor.constraint(equalToConstant: 24).isActive = true
         iconImageView.widthAnchor.constraint(equalTo: iconImageView.heightAnchor).isActive = true
+        iconImageView.translatesAutoresizingMaskIntoConstraints = false
 
         hStackView.addArrangedSubview(iconImageView)
         hStackView.addArrangedSubview(self.downloadCountLabel)
+
+        hStackView.setCustomSpacing(10, after: iconImageView)
 
         return hStackView
     }
