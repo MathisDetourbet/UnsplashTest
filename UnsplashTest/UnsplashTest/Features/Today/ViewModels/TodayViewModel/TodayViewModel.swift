@@ -35,6 +35,7 @@ final class TodayViewModel: TodayViewModelable {
             .map { photosEntity in
                 return photosEntity.map(PhotoViewModel.init)
             }
+            .share()
 
         let reloadPhotosPublisher = photosViewModelPublisher
             .map { _ in () }

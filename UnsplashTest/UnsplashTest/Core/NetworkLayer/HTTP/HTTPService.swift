@@ -38,7 +38,7 @@ final class HTTPService: NetworkService {
             .handleEvents(receiveCompletion: { completion in
                 switch completion {
                 case .failure(let error):
-                    print(error)
+                    print("[NetworkLayer][Decoding error]: ", error)
                 case .finished:
                     break
                 }
@@ -73,7 +73,8 @@ private extension HTTPService {
     private static let authorizationHeaderField = "Authorization"
 
     private func injectAuthorizationHeaders(in urlRequest: inout URLRequest) {
-        urlRequest.addValue(apiAccessKey, forHTTPHeaderField: Self.authorizationHeaderField)
+        let value = "Client-ID \(apiAccessKey)"
+        urlRequest.addValue(value, forHTTPHeaderField: Self.authorizationHeaderField)
     }
 
     private var apiAccessKey: String {
