@@ -128,10 +128,11 @@ private extension TodayViewController {
 
     private enum CollectionViewLayoutProperties {
         static let numberOfItemByRow: Int = 1
-        static let cellAspectRatio: CGFloat = 533/655
+        static let cellAspectRatio: CGFloat = 655/533
         static let minimumLineSpacing: CGFloat = 30.0
         static let collectionHorizontalInset: CGFloat = 5.0
         static let collectionViewMargins: CGFloat = 5.0
+        static let headerViewHeight: CGFloat = 80.0
     }
 
     private func createCollectionView() -> UICollectionView {
@@ -148,6 +149,10 @@ private extension TodayViewController {
         flowLayout.itemSize = self.sizeForItem(collectionViewWidth: collectionViewWidth)
         flowLayout.minimumLineSpacing = CollectionViewLayoutProperties.minimumLineSpacing
         flowLayout.scrollDirection = .vertical
+        flowLayout.headerReferenceSize = .init(
+            width: collectionViewWidth,
+            height: CollectionViewLayoutProperties.headerViewHeight
+        )
 
         return flowLayout
     }

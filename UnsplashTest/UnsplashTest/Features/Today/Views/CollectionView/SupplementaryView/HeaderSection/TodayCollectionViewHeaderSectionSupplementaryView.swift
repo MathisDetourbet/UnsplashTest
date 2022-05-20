@@ -14,7 +14,7 @@ final class TodayCollectionViewHeaderSectionSupplementaryView: UICollectionReusa
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .lightGray
-        label.font = UIFont.systemFont(ofSize: 14.0)
+        label.font = UIFont.boldSystemFont(ofSize: 14.0)
         label.setContentCompressionResistancePriority(.defaultHigh, for: .vertical)
         label.setContentHuggingPriority(.defaultHigh, for: .vertical)
         return label
@@ -24,7 +24,7 @@ final class TodayCollectionViewHeaderSectionSupplementaryView: UICollectionReusa
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .black
-        label.font = UIFont.systemFont(ofSize: 20.0)
+        label.font = UIFont.boldSystemFont(ofSize: 35.0)
         label.setContentCompressionResistancePriority(.defaultHigh, for: .vertical)
         label.setContentHuggingPriority(.defaultHigh, for: .vertical)
         return label
@@ -32,6 +32,7 @@ final class TodayCollectionViewHeaderSectionSupplementaryView: UICollectionReusa
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.buildUI()
     }
 
     required init?(coder: NSCoder) {
@@ -44,16 +45,26 @@ final class TodayCollectionViewHeaderSectionSupplementaryView: UICollectionReusa
     }
 
     private func setupLabels() {
-        self.addSubview(self.todayDateLabel)
-        self.addSubview(self.titleLabel)
+        let containerView = UIView()
+        containerView.backgroundColor = .clear
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+
+        self.addSubview(containerView)
+        containerView.addSubview(self.todayDateLabel)
+        containerView.addSubview(self.titleLabel)
 
         NSLayoutConstraint.activate([
-            self.todayDateLabel.topAnchor.constraint(equalTo: self.topAnchor),
-            self.todayDateLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            containerView.topAnchor.constraint(equalTo: self.topAnchor, constant: 5),
+            containerView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+            containerView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
+            containerView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -5),
 
-            self.titleLabel.topAnchor.constraint(equalTo: self.bottomAnchor, constant: 25),
-            self.titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            self.titleLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+            self.todayDateLabel.topAnchor.constraint(equalTo: containerView.topAnchor),
+            self.todayDateLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+
+            self.titleLabel.topAnchor.constraint(greaterThanOrEqualTo: self.todayDateLabel.bottomAnchor, constant: 5),
+            self.titleLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            self.titleLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
         ])
     }
 }
