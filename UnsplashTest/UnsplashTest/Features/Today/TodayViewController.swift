@@ -34,6 +34,8 @@ final class TodayViewController: UIViewController {
 
         self.setupCollectionView()
         self.bindToViewModelOutput()
+
+        self.viewEventInputSubject.send(.viewDidLoad)
     }
 
     private func setupCollectionView() {
@@ -85,8 +87,10 @@ extension TodayViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        // TODO: To implement
-        fatalError()
+        let cell = collectionView.dequeueReusableCell(for: indexPath, cellType: PhotoCollectionViewCell.self)
+        let cellViewModel = self.viewModel.elementAt(indexPath)
+        cell.fill(with: cellViewModel)
+        return cell
     }
 
     func collectionView(
