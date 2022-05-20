@@ -6,8 +6,10 @@
 //
 
 import UIKit
+import Combine
 
 final class TodayDetailsCollectionViewFooterSectionSupplementaryView: UICollectionReusableView, Reusable {
+    private var subscriptions: Set<AnyCancellable> = []
 
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -56,6 +58,15 @@ final class TodayDetailsCollectionViewFooterSectionSupplementaryView: UICollecti
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+
+        self.subscriptions = []
+
+        self.viewsCountLabel.text = nil
+        self.downloadCountLabel.text = nil
     }
 
     private func buildUI() {
@@ -117,6 +128,23 @@ final class TodayDetailsCollectionViewFooterSectionSupplementaryView: UICollecti
 }
 
 extension TodayDetailsCollectionViewFooterSectionSupplementaryView {
-    
+
+    func fill(with viewModel: TodayDetailsCollectionViewFooterSectionSupplementaryViewModelable) {
+        self.subscriptions = []
+
+        viewModel.downloadsCountStringPublisher
+            .compactMap { $0 }
+            .receive(on: DispatchQueue.main)
+            .assign(to: \.text, on: self.downloadCountLabel)
+            .store(in: &self.subscriptions)
+
+        viewModel.viewsCountStringPublisher
+            .compactMap { $0 }
+            .receive(on: DispatchQueue.main)
+            .assign(to: \.text, on: self.viewsCountLabel)
+            .store(in: &self.subscriptions)
+
+        self.titleLabel.text = viewModel.title
+    }
 }
 
