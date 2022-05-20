@@ -73,6 +73,7 @@
 		66DF8261283823D100D44042 /* PhotoStatisticsDownloadsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DF8260283823D100D44042 /* PhotoStatisticsDownloadsDTO.swift */; };
 		66DF8264283823FC00D44042 /* PhotoStatisticsViewsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DF8263283823FC00D44042 /* PhotoStatisticsViewsDTO.swift */; };
 		66DF82672838249000D44042 /* PhotoStatisticsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DF82662838249000D44042 /* PhotoStatisticsEntity.swift */; };
+		66DF826A2838252B00D44042 /* PhotoStatisticsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DF82692838252B00D44042 /* PhotoStatisticsRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -163,6 +164,7 @@
 		66DF8260283823D100D44042 /* PhotoStatisticsDownloadsDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoStatisticsDownloadsDTO.swift; sourceTree = "<group>"; };
 		66DF8263283823FC00D44042 /* PhotoStatisticsViewsDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoStatisticsViewsDTO.swift; sourceTree = "<group>"; };
 		66DF82662838249000D44042 /* PhotoStatisticsEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoStatisticsEntity.swift; sourceTree = "<group>"; };
+		66DF82692838252B00D44042 /* PhotoStatisticsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoStatisticsRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -511,6 +513,7 @@
 		665B706C2837B8A2001779A1 /* Photos */ = {
 			isa = PBXGroup;
 			children = (
+				66DF82682838251B00D44042 /* Statistics */,
 				665B706E2837B8B5001779A1 /* PhotosRepository.swift */,
 			);
 			path = Photos;
@@ -890,6 +893,14 @@
 			path = Statistics;
 			sourceTree = "<group>";
 		};
+		66DF82682838251B00D44042 /* Statistics */ = {
+			isa = PBXGroup;
+			children = (
+				66DF82692838252B00D44042 /* PhotoStatisticsRepository.swift */,
+			);
+			path = Statistics;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1043,6 +1054,7 @@
 				667CCBCE28363EE70013879A /* AppDelegate.swift in Sources */,
 				665B70482837972C001779A1 /* UserEntity.swift in Sources */,
 				665B706428379B7E001779A1 /* HTTPMethod.swift in Sources */,
+				66DF826A2838252B00D44042 /* PhotoStatisticsRepository.swift in Sources */,
 				665B70832837D488001779A1 /* TodayViewModelOutput.swift in Sources */,
 				665B706F2837B8B5001779A1 /* PhotosRepository.swift in Sources */,
 				66DF82672838249000D44042 /* PhotoStatisticsEntity.swift in Sources */,
