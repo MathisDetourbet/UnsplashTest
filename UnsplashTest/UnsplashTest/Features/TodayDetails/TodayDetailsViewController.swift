@@ -13,6 +13,7 @@ final class TodayDetailsViewController: UIViewController {
     private let viewEventSubject: PassthroughSubject<TodayDetailsViewEvent, Never>
     private let viewModel: TodayDetailsViewModel
     private var subscriptions: Set<AnyCancellable> = []
+    private var footerViewModel: TodayDetailsCollectionViewFooterSectionSupplementaryViewModelable?
 
     init(factory: TodayDetailsFactoryProtocol) {
         let viewEventSubject = PassthroughSubject<TodayDetailsViewEvent, Never>()
@@ -74,6 +75,22 @@ private extension TodayDetailsViewController {
                 })
             }
             .store(in: &self.subscriptions)
+
+        self.viewModel
+            .output
+            .footerViewModelPublisher
+            .sink { [weak self] completion in
+                switch completion {
+                case .failure:
+                    self?.footerViewModel = nil
+                default:
+                    break
+                }
+            } receiveValue: { [weak self] footerViewModel in
+                self?.footerViewModel = footerViewModel
+            }
+            .store(in: &self.subscriptions)
+
     }
 }
 
@@ -106,6 +123,9 @@ extension TodayDetailsViewController: UICollectionViewDataSource {
             for: indexPath,
             viewType: TodayDetailsCollectionViewFooterSectionSupplementaryView.self
         )
+        if let footerViewModel = self.footerViewModel {
+            footerView.fill(with: footerViewModel)
+        }
         return footerView
     }
 }
