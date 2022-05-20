@@ -30,6 +30,16 @@
 		665B70412837950B001779A1 /* PhotoEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665B70402837950B001779A1 /* PhotoEntity.swift */; };
 		665B704528379614001779A1 /* EntityInitializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665B704428379614001779A1 /* EntityInitializable.swift */; };
 		665B70482837972C001779A1 /* UserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665B70472837972C001779A1 /* UserEntity.swift */; };
+		665B705F28379B7E001779A1 /* HTTPConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665B704E28379B7E001779A1 /* HTTPConfiguration.swift */; };
+		665B706028379B7E001779A1 /* HTTPEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665B705028379B7E001779A1 /* HTTPEndPoint.swift */; };
+		665B706128379B7E001779A1 /* URLRequest+HTTPRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665B705328379B7E001779A1 /* URLRequest+HTTPRequest.swift */; };
+		665B706228379B7E001779A1 /* HTTPRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665B705428379B7E001779A1 /* HTTPRequest.swift */; };
+		665B706328379B7E001779A1 /* HTTPHeaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665B705628379B7E001779A1 /* HTTPHeaders.swift */; };
+		665B706428379B7E001779A1 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665B705828379B7E001779A1 /* HTTPMethod.swift */; };
+		665B706528379B7E001779A1 /* HTTPError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665B705A28379B7E001779A1 /* HTTPError.swift */; };
+		665B706628379B7E001779A1 /* HTTPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665B705B28379B7E001779A1 /* HTTPService.swift */; };
+		665B706728379B7E001779A1 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665B705C28379B7E001779A1 /* NetworkService.swift */; };
+		665B706828379B7E001779A1 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665B705E28379B7E001779A1 /* Configuration.swift */; };
 		667CCBCE28363EE70013879A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667CCBCD28363EE70013879A /* AppDelegate.swift */; };
 		667CCBD728363EE90013879A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 667CCBD628363EE90013879A /* Assets.xcassets */; };
 		667CCBDA28363EE90013879A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 667CCBD828363EE90013879A /* LaunchScreen.storyboard */; };
@@ -83,6 +93,16 @@
 		665B70402837950B001779A1 /* PhotoEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEntity.swift; sourceTree = "<group>"; };
 		665B704428379614001779A1 /* EntityInitializable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityInitializable.swift; sourceTree = "<group>"; };
 		665B70472837972C001779A1 /* UserEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEntity.swift; sourceTree = "<group>"; };
+		665B704E28379B7E001779A1 /* HTTPConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPConfiguration.swift; sourceTree = "<group>"; };
+		665B705028379B7E001779A1 /* HTTPEndPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPEndPoint.swift; sourceTree = "<group>"; };
+		665B705328379B7E001779A1 /* URLRequest+HTTPRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URLRequest+HTTPRequest.swift"; sourceTree = "<group>"; };
+		665B705428379B7E001779A1 /* HTTPRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPRequest.swift; sourceTree = "<group>"; };
+		665B705628379B7E001779A1 /* HTTPHeaders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPHeaders.swift; sourceTree = "<group>"; };
+		665B705828379B7E001779A1 /* HTTPMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		665B705A28379B7E001779A1 /* HTTPError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPError.swift; sourceTree = "<group>"; };
+		665B705B28379B7E001779A1 /* HTTPService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPService.swift; sourceTree = "<group>"; };
+		665B705C28379B7E001779A1 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		665B705E28379B7E001779A1 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		667CCBCA28363EE70013879A /* UnsplashTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UnsplashTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		667CCBCD28363EE70013879A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		667CCBD628363EE90013879A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -347,6 +367,85 @@
 			path = DomainLayer;
 			sourceTree = "<group>";
 		};
+		665B704C28379B7E001779A1 /* HTTP */ = {
+			isa = PBXGroup;
+			children = (
+				665B704D28379B7E001779A1 /* Configuration */,
+				665B704F28379B7E001779A1 /* EndPoint */,
+				665B705128379B7E001779A1 /* Request */,
+				665B705928379B7E001779A1 /* Error */,
+				665B705B28379B7E001779A1 /* HTTPService.swift */,
+			);
+			path = HTTP;
+			sourceTree = "<group>";
+		};
+		665B704D28379B7E001779A1 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				665B704E28379B7E001779A1 /* HTTPConfiguration.swift */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		665B704F28379B7E001779A1 /* EndPoint */ = {
+			isa = PBXGroup;
+			children = (
+				665B705028379B7E001779A1 /* HTTPEndPoint.swift */,
+			);
+			path = EndPoint;
+			sourceTree = "<group>";
+		};
+		665B705128379B7E001779A1 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				665B705228379B7E001779A1 /* Extension */,
+				665B705428379B7E001779A1 /* HTTPRequest.swift */,
+				665B705528379B7E001779A1 /* Headers */,
+				665B705728379B7E001779A1 /* Method */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		665B705228379B7E001779A1 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				665B705328379B7E001779A1 /* URLRequest+HTTPRequest.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		665B705528379B7E001779A1 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				665B705628379B7E001779A1 /* HTTPHeaders.swift */,
+			);
+			path = Headers;
+			sourceTree = "<group>";
+		};
+		665B705728379B7E001779A1 /* Method */ = {
+			isa = PBXGroup;
+			children = (
+				665B705828379B7E001779A1 /* HTTPMethod.swift */,
+			);
+			path = Method;
+			sourceTree = "<group>";
+		};
+		665B705928379B7E001779A1 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				665B705A28379B7E001779A1 /* HTTPError.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		665B705D28379B7E001779A1 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				665B705E28379B7E001779A1 /* Configuration.swift */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
 		667CCBC128363EE70013879A = {
 			isa = PBXGroup;
 			children = (
@@ -471,6 +570,9 @@
 		667CCC05283641A10013879A /* NetworkLayer */ = {
 			isa = PBXGroup;
 			children = (
+				665B705D28379B7E001779A1 /* Configuration */,
+				665B704C28379B7E001779A1 /* HTTP */,
+				665B705C28379B7E001779A1 /* NetworkService.swift */,
 			);
 			path = NetworkLayer;
 			sourceTree = "<group>";
@@ -650,30 +752,40 @@
 			buildActionMask = 2147483647;
 			files = (
 				667CCC0A283655F80013879A /* NavigationCoordinator.swift in Sources */,
+				665B706528379B7E001779A1 /* HTTPError.swift in Sources */,
 				667CCC0C283656270013879A /* RootCoordinator.swift in Sources */,
 				665B7000283671CB001779A1 /* TodayViewController.swift in Sources */,
 				665B703B28378853001779A1 /* ProfileImageDTO.swift in Sources */,
 				667CCC12283657290013879A /* Coordinator.swift in Sources */,
 				665B704528379614001779A1 /* EntityInitializable.swift in Sources */,
+				665B706628379B7E001779A1 /* HTTPService.swift in Sources */,
 				665B700928368A15001779A1 /* TodayViewModel.swift in Sources */,
 				665B702F28377A98001779A1 /* UIImageView+ImageDownloader.swift in Sources */,
 				667CCC0F283656F20013879A /* TabBarCoordinator.swift in Sources */,
 				665B7021283698C1001779A1 /* Reusable.swift in Sources */,
 				667CCBCE28363EE70013879A /* AppDelegate.swift in Sources */,
 				665B70482837972C001779A1 /* UserEntity.swift in Sources */,
+				665B706428379B7E001779A1 /* HTTPMethod.swift in Sources */,
 				665B70182836901C001779A1 /* TodayCollectionViewHeaderSectionSupplementaryView.swift in Sources */,
 				665B70412837950B001779A1 /* PhotoEntity.swift in Sources */,
 				665B70352837836E001779A1 /* PhotoDTO.swift in Sources */,
+				665B706128379B7E001779A1 /* URLRequest+HTTPRequest.swift in Sources */,
+				665B705F28379B7E001779A1 /* HTTPConfiguration.swift in Sources */,
 				665B70272836A759001779A1 /* PhotoCellViewModel.swift in Sources */,
+				665B706328379B7E001779A1 /* HTTPHeaders.swift in Sources */,
 				665B703828378811001779A1 /* UserDTO.swift in Sources */,
 				665B702A2836AA0A001779A1 /* ImageDownloader.swift in Sources */,
 				665B700D28368AA8001779A1 /* TableOrCollectionViewModel.swift in Sources */,
 				665B703D28379417001779A1 /* URLsDTO.swift in Sources */,
 				665B702D2836AA97001779A1 /* ImageCache.swift in Sources */,
 				665B70042836721B001779A1 /* TodayNavigationCoordinator.swift in Sources */,
+				665B706728379B7E001779A1 /* NetworkService.swift in Sources */,
 				665B70242836A053001779A1 /* PhotoCollectionViewCell.swift in Sources */,
+				665B706828379B7E001779A1 /* Configuration.swift in Sources */,
 				665B701F2836987C001779A1 /* UICollectionView+Reusable.swift in Sources */,
 				665B701B2836949F001779A1 /* TodayCollectionViewHeaderSectionSupplementaryViewModel.swift in Sources */,
+				665B706228379B7E001779A1 /* HTTPRequest.swift in Sources */,
+				665B706028379B7E001779A1 /* HTTPEndPoint.swift in Sources */,
 				665B701028368D9E001779A1 /* PhotoViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
