@@ -9,9 +9,9 @@ import UIKit
 import Combine
 
 struct PhotoViewModel: PhotoCellViewModelable {
-    let backgroundImage: AnyPublisher<UIImage?, Never>
+    let backgroundImageURL: URL
+    let userImageURL: URL
     let description: String?
-    let userImage: AnyPublisher<UIImage?, Never>
     let username: String
     let likesCountString: String
 }

@@ -9,7 +9,6 @@ import UIKit
 import Combine
 
 final class PhotoCollectionViewCell: UICollectionViewCell, Reusable {
-    private var subscriptions: Set<AnyCancellable> = []
 
     private let backgroundImageView: UIImageView = {
         let imageView = UIImageView()
@@ -68,7 +67,8 @@ final class PhotoCollectionViewCell: UICollectionViewCell, Reusable {
 
     override func prepareForReuse() {
         super.prepareForReuse()
-        self.subscriptions = []
+        self.backgroundImageView.cancelImageDownload()
+        self.userImageView.cancelImageDownload()
         self.backgroundImageView.image = nil
         self.userImageView.image = nil
         self.descriptionLabel.text = nil
@@ -134,19 +134,8 @@ final class PhotoCollectionViewCell: UICollectionViewCell, Reusable {
 extension PhotoCollectionViewCell {
 
     func fill(with viewModel: PhotoCellViewModelable) {
-        viewModel.backgroundImage
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] image in
-                self?.backgroundImageView.image = image
-            }
-            .store(in: &self.subscriptions)
-
-        viewModel.userImage
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] image in
-                self?.userImageView.image = image
-            }
-            .store(in: &self.subscriptions)
+        self.backgroundImageView.fetchImage(at: viewModel.backgroundImageURL)
+        self.userImageView.fetchImage(at: viewModel.userImageURL)
 
         self.descriptionLabel.text = viewModel.description
         self.usernameLabel.text = viewModel.username

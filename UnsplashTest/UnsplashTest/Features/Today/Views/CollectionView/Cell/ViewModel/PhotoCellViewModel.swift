@@ -6,12 +6,11 @@
 //
 
 import UIKit
-import Combine
 
 protocol PhotoCellViewModelable {
-    var backgroundImage: AnyPublisher<UIImage?, Never> { get }
+    var backgroundImageURL: URL { get }
     var description: String? { get }
-    var userImage: AnyPublisher<UIImage?, Never> { get }
+    var userImageURL: URL { get }
     var username: String { get }
     var likesCountString: String { get }
 }
