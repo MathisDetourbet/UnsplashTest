@@ -23,6 +23,10 @@
 		665B702A2836AA0A001779A1 /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665B70292836AA0A001779A1 /* ImageDownloader.swift */; };
 		665B702D2836AA97001779A1 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665B702C2836AA97001779A1 /* ImageCache.swift */; };
 		665B702F28377A98001779A1 /* UIImageView+ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665B702E28377A98001779A1 /* UIImageView+ImageDownloader.swift */; };
+		665B70352837836E001779A1 /* PhotoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665B70342837836E001779A1 /* PhotoDTO.swift */; };
+		665B703828378811001779A1 /* UserDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665B703728378811001779A1 /* UserDTO.swift */; };
+		665B703B28378853001779A1 /* ProfileImageDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665B703A28378853001779A1 /* ProfileImageDTO.swift */; };
+		665B703D28379417001779A1 /* URLsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665B703C28379417001779A1 /* URLsDTO.swift */; };
 		667CCBCE28363EE70013879A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667CCBCD28363EE70013879A /* AppDelegate.swift */; };
 		667CCBD728363EE90013879A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 667CCBD628363EE90013879A /* Assets.xcassets */; };
 		667CCBDA28363EE90013879A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 667CCBD828363EE90013879A /* LaunchScreen.storyboard */; };
@@ -69,6 +73,10 @@
 		665B70292836AA0A001779A1 /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
 		665B702C2836AA97001779A1 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		665B702E28377A98001779A1 /* UIImageView+ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+ImageDownloader.swift"; sourceTree = "<group>"; };
+		665B70342837836E001779A1 /* PhotoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDTO.swift; sourceTree = "<group>"; };
+		665B703728378811001779A1 /* UserDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDTO.swift; sourceTree = "<group>"; };
+		665B703A28378853001779A1 /* ProfileImageDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageDTO.swift; sourceTree = "<group>"; };
+		665B703C28379417001779A1 /* URLsDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLsDTO.swift; sourceTree = "<group>"; };
 		667CCBCA28363EE70013879A /* UnsplashTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UnsplashTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		667CCBCD28363EE70013879A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		667CCBD628363EE90013879A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -240,6 +248,57 @@
 			path = ImageCache;
 			sourceTree = "<group>";
 		};
+		665B703128378352001779A1 /* DataLayer */ = {
+			isa = PBXGroup;
+			children = (
+				665B703228378358001779A1 /* DTO */,
+			);
+			path = DataLayer;
+			sourceTree = "<group>";
+		};
+		665B703228378358001779A1 /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				665B703628378809001779A1 /* User */,
+				665B70332837835E001779A1 /* Photo */,
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		665B70332837835E001779A1 /* Photo */ = {
+			isa = PBXGroup;
+			children = (
+				665B703E28379423001779A1 /* URLs */,
+				665B70342837836E001779A1 /* PhotoDTO.swift */,
+			);
+			path = Photo;
+			sourceTree = "<group>";
+		};
+		665B703628378809001779A1 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				665B703928378847001779A1 /* ProfileImage */,
+				665B703728378811001779A1 /* UserDTO.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		665B703928378847001779A1 /* ProfileImage */ = {
+			isa = PBXGroup;
+			children = (
+				665B703A28378853001779A1 /* ProfileImageDTO.swift */,
+			);
+			path = ProfileImage;
+			sourceTree = "<group>";
+		};
+		665B703E28379423001779A1 /* URLs */ = {
+			isa = PBXGroup;
+			children = (
+				665B703C28379417001779A1 /* URLsDTO.swift */,
+			);
+			path = URLs;
+			sourceTree = "<group>";
+		};
 		667CCBC128363EE70013879A = {
 			isa = PBXGroup;
 			children = (
@@ -300,6 +359,7 @@
 		667CCBFE2836414F0013879A /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				665B703128378352001779A1 /* DataLayer */,
 				665B700B28368A9A001779A1 /* Utils */,
 				667CCC06283641AA0013879A /* NavigationLayer */,
 				667CCC05283641A10013879A /* NetworkLayer */,
@@ -543,6 +603,7 @@
 				667CCC0A283655F80013879A /* NavigationCoordinator.swift in Sources */,
 				667CCC0C283656270013879A /* RootCoordinator.swift in Sources */,
 				665B7000283671CB001779A1 /* TodayViewController.swift in Sources */,
+				665B703B28378853001779A1 /* ProfileImageDTO.swift in Sources */,
 				667CCC12283657290013879A /* Coordinator.swift in Sources */,
 				665B700928368A15001779A1 /* TodayViewModel.swift in Sources */,
 				665B702F28377A98001779A1 /* UIImageView+ImageDownloader.swift in Sources */,
@@ -550,9 +611,12 @@
 				665B7021283698C1001779A1 /* Reusable.swift in Sources */,
 				667CCBCE28363EE70013879A /* AppDelegate.swift in Sources */,
 				665B70182836901C001779A1 /* TodayCollectionViewHeaderSectionSupplementaryView.swift in Sources */,
+				665B70352837836E001779A1 /* PhotoDTO.swift in Sources */,
 				665B70272836A759001779A1 /* PhotoCellViewModel.swift in Sources */,
+				665B703828378811001779A1 /* UserDTO.swift in Sources */,
 				665B702A2836AA0A001779A1 /* ImageDownloader.swift in Sources */,
 				665B700D28368AA8001779A1 /* TableOrCollectionViewModel.swift in Sources */,
+				665B703D28379417001779A1 /* URLsDTO.swift in Sources */,
 				665B702D2836AA97001779A1 /* ImageCache.swift in Sources */,
 				665B70042836721B001779A1 /* TodayNavigationCoordinator.swift in Sources */,
 				665B70242836A053001779A1 /* PhotoCollectionViewCell.swift in Sources */,
