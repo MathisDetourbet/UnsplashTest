@@ -11,6 +11,8 @@ import Combine
 final class PhotoCollectionViewCell: UICollectionViewCell, Reusable {
     private var subscriptions: Set<AnyCancellable> = []
 
+    var backgroundImage: UIImage? { self.backgroundImageView.image }
+
     private let backgroundImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false

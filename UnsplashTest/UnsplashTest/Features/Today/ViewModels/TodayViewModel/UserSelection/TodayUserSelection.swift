@@ -7,4 +7,8 @@
 
 import Foundation
 
-typealias TodayUserSelection = (username: String, photoId: String)
+typealias TodayUserSelection = (
+    username: String,
+    photoId: String,
+    transitionModel: TodayCustomTransitionModel?
+)

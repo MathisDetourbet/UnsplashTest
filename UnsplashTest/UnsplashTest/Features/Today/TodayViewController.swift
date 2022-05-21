@@ -120,10 +120,27 @@ extension TodayViewController: UICollectionViewDataSource {
 extension TodayViewController: UICollectionViewDelegate {
 
     func collectionView(
-        _ _: UICollectionView,
+        _ collectionView: UICollectionView,
         didSelectItemAt indexPath: IndexPath
     ) {
-        self.viewEventSubject.send(.didSelectPhoto(indexPath: indexPath))
+        let transitionModel: TodayCustomTransitionModel?
+        if let selectedCell = collectionView.cellForItem(at: indexPath) as? PhotoCollectionViewCell {
+            let photoImage = selectedCell.backgroundImage ?? UIImage()
+            let cellFrame = collectionView.layoutAttributesForItem(at: indexPath)?.frame ?? .zero
+            transitionModel = TodayCustomTransitionModel(
+                originFrame: cellFrame,
+                originView: self.view,
+                photoImage: photoImage,
+                finalFrame: .zero
+            )
+        } else {
+            transitionModel = nil
+        }
+
+        self.viewEventSubject.send(.didSelectPhoto(
+            indexPath: indexPath,
+            transitionModel: transitionModel)
+        )
     }
 }
 

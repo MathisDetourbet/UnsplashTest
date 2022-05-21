@@ -64,8 +64,12 @@ final class TodayViewModel: TodayViewModelable {
                     return nil
                 }
                 switch viewEvent {
-                case .didSelectPhoto(let indexPath):
-                    return Self.userSelection(at: indexPath, in: self.photosViewModel)
+                case .didSelectPhoto(let indexPath, let transitionModel):
+                    return Self.userSelection(
+                        at: indexPath,
+                        in: self.photosViewModel,
+                        transitionModel: transitionModel
+                    )
                 default:
                     return nil
                 }
@@ -76,7 +80,8 @@ final class TodayViewModel: TodayViewModelable {
                 }
                 input.coordinatorDelegate?.userDidSelectPhoto(
                     withId: userSelection.photoId,
-                    forUsername: userSelection.username
+                    forUsername: userSelection.username,
+                    transitionModel: userSelection.transitionModel
                 )
             }
             .store(in: &self.subscriptions)
@@ -84,12 +89,13 @@ final class TodayViewModel: TodayViewModelable {
 
     private static func userSelection(
         at indexPath: IndexPath,
-        in photosViewModel: [PhotoViewModel]
+        in photosViewModel: [PhotoViewModel],
+        transitionModel: TodayCustomTransitionModel? = nil
     ) -> TodayUserSelection? {
         let selectedPhoto = photosViewModel[indexPath.item]
         let photoId = selectedPhoto.photoId
         let username = selectedPhoto.username
-        return (username, photoId)
+        return (username, photoId, transitionModel)
     }
 }
 
