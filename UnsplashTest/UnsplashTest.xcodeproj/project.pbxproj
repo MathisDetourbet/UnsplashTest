@@ -83,6 +83,7 @@
 		66DF8283283839BA00D44042 /* UserPhotosRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DF8282283839BA00D44042 /* UserPhotosRepository.swift */; };
 		66DF828528383B7D00D44042 /* FetchUserPhotosUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DF828428383B7D00D44042 /* FetchUserPhotosUseCase.swift */; };
 		66DF82882838478E00D44042 /* PhotoDetailsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DF82872838478E00D44042 /* PhotoDetailsCollectionViewCell.swift */; };
+		66DF82932838C23200D44042 /* PhotoViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DF82922838C23200D44042 /* PhotoViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -183,6 +184,7 @@
 		66DF8282283839BA00D44042 /* UserPhotosRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPhotosRepository.swift; sourceTree = "<group>"; };
 		66DF828428383B7D00D44042 /* FetchUserPhotosUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchUserPhotosUseCase.swift; sourceTree = "<group>"; };
 		66DF82872838478E00D44042 /* PhotoDetailsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailsCollectionViewCell.swift; sourceTree = "<group>"; };
+		66DF82922838C23200D44042 /* PhotoViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -243,6 +245,7 @@
 			isa = PBXGroup;
 			children = (
 				665B700F28368D9E001779A1 /* PhotoViewModel.swift */,
+				66DF82922838C23200D44042 /* PhotoViewModelTests.swift */,
 			);
 			path = PhotoViewModel;
 			sourceTree = "<group>";
@@ -1209,6 +1212,7 @@
 				66DF824A28381B5200D44042 /* TodayDetailsCollectionViewFooterSectionSupplementaryViewModelTests.swift in Sources */,
 				665B70072836784D001779A1 /* RootCoordinatorTests.swift in Sources */,
 				667CCBE528363EE90013879A /* UnsplashTestTests.swift in Sources */,
+				66DF82932838C23200D44042 /* PhotoViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
