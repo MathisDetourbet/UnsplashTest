@@ -41,6 +41,9 @@ final class ImageDownloader {
                 }
                 return image
             }
+            .handleEvents(receiveOutput: { [cache] image in
+                cache.storeImageInCache(image, for: url)
+            })
             .mapError(DownloadError.init)
             .eraseToAnyPublisher()
     }
