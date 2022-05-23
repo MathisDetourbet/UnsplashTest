@@ -13,17 +13,17 @@ protocol TodayCollectionViewHeaderSectionSupplementaryViewModelable {
 }
 
 struct TodayCollectionViewHeaderSectionSupplementaryViewModel: TodayCollectionViewHeaderSectionSupplementaryViewModelable {
-    let todayDateString: String = Self.formatTodayDate().uppercased()
+    let todayDateString: String
     let title: String = "Today"
 
     private let date: Date
 
     init(date: Date = Date()) {
         self.date = date
+        self.todayDateString = Self.formatTodayDate(from: date).uppercased()
     }
 
-    private static func formatTodayDate() -> String {
-        let todayDate = Date()
+    private static func formatTodayDate(from todayDate: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEEE d MMMM"
         return dateFormatter.string(from: todayDate)
