@@ -11,7 +11,7 @@ enum TodayViewEvent {
     /// The view is setup
     case viewDidLoad
     /// The user did select a photo.
-    case didSelectPhoto(indexPath: IndexPath)
+    case didSelectPhoto(indexPath: IndexPath, transitionModel: TodayCustomTransitionModel?)
 }
 
 extension TodayViewEvent: Equatable {}

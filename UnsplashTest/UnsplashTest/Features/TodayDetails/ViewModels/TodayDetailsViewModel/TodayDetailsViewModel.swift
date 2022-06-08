@@ -25,17 +25,20 @@ final class TodayDetailsViewModel: TodayDetailsViewModelable {
     init(input: Input) {
         self.viewableList = []
 
+        let username = input.photoViewModel.username
+        let photoId = input.photoViewModel.photoId
+
         let fetchesPublisher = input.viewEventPublisher
             .filter { $0 == .viewDidLoad }
             .setFailureType(to: ViewModelError.self)
             .flatMap { _ in
                 Publishers.Zip(
                     input.fetchUserPhotosUseCase
-                        .execute(forUsername: input.username)
+                        .execute(forUsername: username)
                         .mapError(ViewModelError.init)
                         .eraseToAnyPublisher(),
                     input.fetchPhotoStatisticsUseCase
-                        .execute(forPhotoId: input.photoId)
+                        .execute(forPhotoId: photoId)
                         .mapError(ViewModelError.init)
                         .eraseToAnyPublisher()
                 )
@@ -67,13 +70,26 @@ final class TodayDetailsViewModel: TodayDetailsViewModelable {
             footerViewModelPublisher: footerViewModelPublisher
         )
 
-        fetchesPublisher
-            .map(\.0) // UserPhotos
-            .map { photoEntities in
-                return photoEntities.map(PhotoDetailsViewModel.init)
-            }
+        let userPhotosPublisher = fetchesPublisher
+            .map(\.0)
             .catch { _ in
                 Just([]).eraseToAnyPublisher()
+            }
+            .eraseToAnyPublisher()
+
+        Publishers
+            .CombineLatest(
+                Just(input.photoViewModel)
+                    .map(PhotoDetailsViewModel.init)
+                    .eraseToAnyPublisher(),
+                Publishers.Merge(
+                    userPhotosPublisher,
+                    Just([]).eraseToAnyPublisher()
+                )
+                .eraseToAnyPublisher()
+            )
+            .map { selectedPhotoViewModel, userPhotosEntity -> [PhotoDetailsViewModel] in
+                return [selectedPhotoViewModel] + userPhotosEntity.map(PhotoDetailsViewModel.init)
             }
             .sink { [weak self] photoDetailsViewModel in
                 self?.viewableList = photoDetailsViewModel

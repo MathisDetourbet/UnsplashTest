@@ -120,10 +120,23 @@ extension TodayViewController: UICollectionViewDataSource {
 extension TodayViewController: UICollectionViewDelegate {
 
     func collectionView(
-        _ _: UICollectionView,
+        _ collectionView: UICollectionView,
         didSelectItemAt indexPath: IndexPath
     ) {
-        self.viewEventSubject.send(.didSelectPhoto(indexPath: indexPath))
+        let calculatePhotoCellSizeUseCase = TodayDetailsCalculatePhotoCellSizeUseCase(
+            collectionViewWidth: self.view.frame.width - 2 * TodayDetailsViewController.CollectionViewLayoutProperties.collectionViewMargins
+        )
+        let calculateTransitionModelUseCase = TodayCalculateTransitionModelUseCase(
+            todayDetailsCellCalculationUseCase: calculatePhotoCellSizeUseCase,
+            collectionView: collectionView,
+            indexPath: indexPath,
+            containerView: self.view
+        )
+        let transitionModel = calculateTransitionModelUseCase.execute()
+        self.viewEventSubject.send(.didSelectPhoto(
+            indexPath: indexPath,
+            transitionModel: transitionModel)
+        )
     }
 }
 
@@ -139,16 +152,18 @@ private extension TodayViewController {
         static let headerViewHeight: CGFloat = 80.0
     }
 
+    private var collectionViewWidth: CGFloat {
+        return self.view.frame.width - 2 * CollectionViewLayoutProperties.collectionViewMargins
+    }
+
     private func createCollectionView() -> UICollectionView {
-        let collectionViewLayout = self.createCollectionViewLayout(with: self.view.frame)
+        let collectionViewLayout = self.createCollectionViewLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
         collectionView.backgroundColor = .clear
         return collectionView
     }
 
-    private func createCollectionViewLayout(with frame: CGRect) -> UICollectionViewFlowLayout {
-        let collectionViewWidth = frame.width - 3 * CollectionViewLayoutProperties.collectionViewMargins
-
+    private func createCollectionViewLayout() -> UICollectionViewFlowLayout {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.itemSize = self.sizeForItem(collectionViewWidth: collectionViewWidth)
         flowLayout.minimumLineSpacing = CollectionViewLayoutProperties.minimumLineSpacing

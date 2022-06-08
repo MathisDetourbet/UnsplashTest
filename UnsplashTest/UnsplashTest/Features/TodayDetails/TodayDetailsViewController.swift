@@ -21,11 +21,21 @@ final class TodayDetailsViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         let closeImage = UIImage(named: "close")
         button.setImage(closeImage, for: .normal)
-        button.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        button.heightAnchor.constraint(equalToConstant: 30).isActive = true
         button.widthAnchor.constraint(equalTo: button.heightAnchor).isActive = true
         button.tintColor = .gray
         return button
     }()
+    private let containerView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .white
+        view.alpha = 0.0
+        return view
+    }()
+    var transitionPhotoImageView: UIImageView?
+
+    override var prefersStatusBarHidden: Bool { true }
 
     init(factory: TodayDetailsFactoryProtocol) {
         let viewEventSubject = PassthroughSubject<TodayDetailsViewEvent, Never>()
@@ -49,10 +59,27 @@ final class TodayDetailsViewController: UIViewController {
         self.viewEventSubject.send(.viewDidLoad)
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.showContent()
+    }
+
     private func buildUI() {
         self.view.backgroundColor = .white
+
+        self.setupContainerView()
         self.setupCollectionView()
         self.setupCloseButton()
+    }
+
+    private func setupContainerView() {
+        self.view.addSubview(self.containerView)
+        NSLayoutConstraint.activate([
+            self.containerView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: CollectionViewLayoutProperties.collectionViewMargins),
+            self.containerView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            self.containerView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            self.containerView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
+        ])
     }
 
     private func setupCollectionView() {
@@ -65,12 +92,12 @@ final class TodayDetailsViewController: UIViewController {
         self.userPhotosCollectionView.register(cellType: PhotoCollectionViewCell.self)
         self.userPhotosCollectionView.translatesAutoresizingMaskIntoConstraints = false
 
-        self.view.addSubview(self.userPhotosCollectionView)
+        self.containerView.addSubview(self.userPhotosCollectionView)
         NSLayoutConstraint.activate([
-            self.userPhotosCollectionView.topAnchor.constraint(equalTo: self.view.topAnchor),
-            self.userPhotosCollectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            self.userPhotosCollectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            self.userPhotosCollectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
+            self.userPhotosCollectionView.topAnchor.constraint(equalTo: self.containerView.topAnchor),
+            self.userPhotosCollectionView.leadingAnchor.constraint(equalTo: self.containerView.leadingAnchor),
+            self.userPhotosCollectionView.trailingAnchor.constraint(equalTo: self.containerView.trailingAnchor),
+            self.userPhotosCollectionView.bottomAnchor.constraint(equalTo: self.containerView.bottomAnchor)
         ])
     }
 
@@ -81,15 +108,14 @@ final class TodayDetailsViewController: UIViewController {
         backgroundCircleView.clipsToBounds = true
         backgroundCircleView.translatesAutoresizingMaskIntoConstraints = false
 
-        self.view.addSubview(backgroundCircleView)
+        self.containerView.addSubview(backgroundCircleView)
         backgroundCircleView.addSubview(self.closeButton)
 
         NSLayoutConstraint.activate([
-            backgroundCircleView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 50),
-            backgroundCircleView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -15),
+            backgroundCircleView.topAnchor.constraint(equalTo: self.containerView.topAnchor, constant: 30),
+            backgroundCircleView.trailingAnchor.constraint(equalTo: self.containerView.trailingAnchor, constant: -15),
             backgroundCircleView.heightAnchor.constraint(equalToConstant: 50),
             backgroundCircleView.widthAnchor.constraint(equalTo: backgroundCircleView.heightAnchor),
-
 
             self.closeButton.centerXAnchor.constraint(equalTo: backgroundCircleView.centerXAnchor),
             self.closeButton.centerYAnchor.constraint(equalTo: backgroundCircleView.centerYAnchor)
@@ -99,6 +125,14 @@ final class TodayDetailsViewController: UIViewController {
     @objc
     private func closeButtonTap(_ sender: UIButton) {
         self.viewEventSubject.send(.didTapOnClose)
+    }
+
+    private func showContent() {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.containerView.alpha = 1.0
+        }, completion: { _ in
+            self.transitionPhotoImageView?.removeFromSuperview()
+        })
     }
 }
 
@@ -133,7 +167,6 @@ private extension TodayDetailsViewController {
                 self?.footerViewModel = footerViewModel
             }
             .store(in: &self.subscriptions)
-
     }
 }
 
@@ -176,16 +209,20 @@ extension TodayDetailsViewController: UICollectionViewDataSource {
 }
 
 // MARK: - Collection view setup
-private extension TodayDetailsViewController {
+extension TodayDetailsViewController {
 
-    private enum CollectionViewLayoutProperties {
-        static let numberOfItemByRow: Int = 2
+    enum CollectionViewLayoutProperties {
+        static let numberOfItemByRow: UInt = 2
         static let cellAspectRatio: CGFloat = 1.0
         static let minimumItemsSpacing: CGFloat = 2.0
         static let minimumLineSpacing: CGFloat = 4.0
         static let collectionHorizontalInset: CGFloat = 2.0
         static let collectionViewMargins: CGFloat = 3.0
         static let footerViewHeight: CGFloat = 120.0
+    }
+
+    var collectionViewWidth: CGFloat {
+        return self.view.frame.width - 2 * CollectionViewLayoutProperties.collectionViewMargins
     }
 
     private func createCollectionView() -> UICollectionView {
@@ -197,12 +234,22 @@ private extension TodayDetailsViewController {
 
     private func createCollectionViewLayout(with frame: CGRect) -> UICollectionViewFlowLayout {
         let itemsHorizontalInset = CollectionViewLayoutProperties.minimumItemsSpacing
-        let collectionViewWidth = frame.width - 2 * CollectionViewLayoutProperties.collectionViewMargins
 
         let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.itemSize = self.sizeForItem(collectionViewWidth: collectionViewWidth)
+        let cellSizeCalculationUseCase = TodayDetailsCalculatePhotoCellSizeUseCase(
+            collectionViewWidth: collectionViewWidth,
+            numberOfItemByRow: CollectionViewLayoutProperties.numberOfItemByRow,
+            collectionHorizontalInset: CollectionViewLayoutProperties.collectionHorizontalInset,
+            cellAspectRatio: CollectionViewLayoutProperties.cellAspectRatio
+        )
+        flowLayout.itemSize = cellSizeCalculationUseCase.execute()
         flowLayout.minimumLineSpacing = CollectionViewLayoutProperties.minimumLineSpacing
-        flowLayout.sectionInset = UIEdgeInsets(top: 0.0, left: itemsHorizontalInset, bottom: 0.0, right: itemsHorizontalInset)
+        flowLayout.sectionInset = UIEdgeInsets(
+            top: 0.0,
+            left: itemsHorizontalInset,
+            bottom: 0.0,
+            right: itemsHorizontalInset
+        )
         flowLayout.minimumInteritemSpacing = CollectionViewLayoutProperties.minimumItemsSpacing
         flowLayout.scrollDirection = .vertical
         flowLayout.footerReferenceSize = .init(
@@ -211,13 +258,5 @@ private extension TodayDetailsViewController {
         )
 
         return flowLayout
-    }
-
-    private func sizeForItem(collectionViewWidth: CGFloat) -> CGSize {
-        let numberOfItemByRow = CGFloat(CollectionViewLayoutProperties.numberOfItemByRow)
-        let itemWidth = collectionViewWidth / numberOfItemByRow - CollectionViewLayoutProperties.collectionHorizontalInset
-        let itemHeight = itemWidth * CollectionViewLayoutProperties.cellAspectRatio
-
-        return CGSize(width: itemWidth, height: itemHeight)
     }
 }

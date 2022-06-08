@@ -8,8 +8,7 @@
 import Combine
 
 protocol TodayDetailsViewModelInputable {
-    var username: String { get }
-    var photoId: String { get }
+    var photoViewModel: PhotoViewModel { get }
     var viewEventPublisher: AnyPublisher<TodayDetailsViewEvent, Never> { get }
     var fetchPhotoStatisticsUseCase: FetchPhotoStatisticsUseCaseProtocol { get }
     var fetchUserPhotosUseCase: FetchUserPhotosUseCaseProtocol { get }
@@ -17,8 +16,7 @@ protocol TodayDetailsViewModelInputable {
 }
 
 struct TodayDetailsViewModelInput: TodayDetailsViewModelInputable {
-    let username: String
-    let photoId: String
+    let photoViewModel: PhotoViewModel
     let viewEventPublisher: AnyPublisher<TodayDetailsViewEvent, Never>
     let fetchPhotoStatisticsUseCase: FetchPhotoStatisticsUseCaseProtocol
     let fetchUserPhotosUseCase: FetchUserPhotosUseCaseProtocol

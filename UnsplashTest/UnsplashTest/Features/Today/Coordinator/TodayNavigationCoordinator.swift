@@ -8,16 +8,23 @@
 import UIKit
 
 protocol TodayNavigationCoordinatorDelegate: AnyObject {
-    func userDidSelectPhoto(withId photoId: String, forUsername username: String)
+    func userDidSelectPhoto(
+        photoViewModel: PhotoViewModel,
+        transitionModel: TodayCustomTransitionModel?
+    )
 }
 
 final class TodayNavigationCoordinator: NavigationCoordinator {
     private(set) var children: [Coordinator] = []
     private let dependencies: TodayDependencies
+    private var todayCustomPhotoTransitionNavigationController: TodayCustomPhotoTransitionNavigationController?
 
     let navigationController: UINavigationController
 
-    init(navigationController: UINavigationController, todayDependencies: TodayDependencies) {
+    init(
+        navigationController: UINavigationController,
+        todayDependencies: TodayDependencies
+    ) {
         self.navigationController = navigationController
         self.dependencies = todayDependencies
     }
@@ -39,7 +46,16 @@ final class TodayNavigationCoordinator: NavigationCoordinator {
         self.navigationController.popViewController(animated: true)
     }
 
-    private func startTodayDetails(with dependencies: TodayDetailsDependencies) {
+    private func startTodayDetails(
+        with dependencies: TodayDetailsDependencies,
+        transitionModel: TodayCustomTransitionModel? = nil
+    ) {
+        if let transitionModel = transitionModel {
+            self.todayCustomPhotoTransitionNavigationController = TodayCustomPhotoTransitionNavigationController(transitionModel: transitionModel
+            )
+            self.navigationController.delegate = self.todayCustomPhotoTransitionNavigationController
+        }
+
         let todayDetailsCoordinator = TodayDetailsNavigationCoordinator(
             navigationController: self.navigationController,
             todayDetailsDependencies: dependencies
@@ -53,15 +69,17 @@ final class TodayNavigationCoordinator: NavigationCoordinator {
 extension TodayNavigationCoordinator: TodayNavigationCoordinatorDelegate {
 
     func userDidSelectPhoto(
-        withId photoId: String,
-        forUsername username: String
+        photoViewModel: PhotoViewModel,
+        transitionModel: TodayCustomTransitionModel? = nil
     ) {
         let todayDetailsDependencies = TodayDetailsDependencies(
-            username: username,
-            photoId: photoId,
+            photoViewModel: photoViewModel,
             photoStatisticsRepository: self.dependencies.photoStatisticsRepository,
             userPhotosRepository: self.dependencies.userPhotosRepository
         )
-        self.startTodayDetails(with: todayDetailsDependencies)
+        self.startTodayDetails(
+            with: todayDetailsDependencies,
+            transitionModel: transitionModel
+        )
     }
 }

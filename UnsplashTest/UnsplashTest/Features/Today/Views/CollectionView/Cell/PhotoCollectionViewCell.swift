@@ -9,7 +9,12 @@ import UIKit
 import Combine
 
 final class PhotoCollectionViewCell: UICollectionViewCell, Reusable {
+    static let imageCornerRadius: CGFloat = 8.0
+
     private var subscriptions: Set<AnyCancellable> = []
+
+    var backgroundImage: UIImage? { self.backgroundImageView.image }
+    var backgroundImageCornerRadius: CGFloat { self.backgroundImageView.layer.cornerRadius }
 
     private let backgroundImageView: UIImageView = {
         let imageView = UIImageView()
@@ -89,7 +94,7 @@ final class PhotoCollectionViewCell: UICollectionViewCell, Reusable {
     }
 
     private func setupCell() {
-        self.layer.cornerRadius = 8.0
+        self.layer.cornerRadius = Self.imageCornerRadius
         self.clipsToBounds = true
     }
 
