@@ -60,42 +60,20 @@ final class TodayViewModel: TodayViewModelable {
 
         input.viewEventPublisher
             .map { [weak self] viewEvent -> TodayUserSelection? in
-                guard let self = self else {
-                    return nil
-                }
-                switch viewEvent {
-                case .didSelectPhoto(let indexPath, let transitionModel):
-                    return Self.userSelection(
-                        at: indexPath,
-                        in: self.photosViewModel,
-                        transitionModel: transitionModel
-                    )
-                default:
-                    return nil
-                }
+                return .init(
+                    viewEvent: viewEvent,
+                    photosViewModel: self?.photosViewModel ?? []
+                )
             }
             .sink { [input] userSelection in
                 guard let userSelection = userSelection else {
                     return
                 }
                 input.coordinatorDelegate?.userDidSelectPhoto(
-                    withId: userSelection.photoId,
-                    forUsername: userSelection.username,
+                    photoViewModel: userSelection.photoViewModel,
                     transitionModel: userSelection.transitionModel
                 )
             }
             .store(in: &self.subscriptions)
     }
-
-    private static func userSelection(
-        at indexPath: IndexPath,
-        in photosViewModel: [PhotoViewModel],
-        transitionModel: TodayCustomTransitionModel? = nil
-    ) -> TodayUserSelection? {
-        let selectedPhoto = photosViewModel[indexPath.item]
-        let photoId = selectedPhoto.photoId
-        let username = selectedPhoto.username
-        return (username, photoId, transitionModel)
-    }
 }
-

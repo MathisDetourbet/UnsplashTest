@@ -17,4 +17,10 @@ struct PhotoDetailsViewModel: PhotoDetailsViewModelable {
     init(photoEntity: PhotoEntity) {
         self.imageURL = photoEntity.imageURL
     }
+
+    init(photoViewModel: PhotoViewModel) {
+        self.imageURL = photoViewModel.backgroundImageURL
+    }
 }
+
+extension PhotoDetailsViewModel: Equatable {}

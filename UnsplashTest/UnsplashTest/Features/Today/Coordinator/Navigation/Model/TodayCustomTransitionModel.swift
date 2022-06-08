@@ -8,20 +8,7 @@
 import UIKit
 
 struct TodayCustomTransitionModel: Equatable {
-    let originFrame: CGRect
-    let originView: UIView
+    let originalCellFrame: CGRect
+    let finalCellFrame: CGRect
     let photoImage: UIImage
-    let finalFrame: CGRect
-
-    init(
-        originFrame: CGRect,
-        originView: UIView,
-        photoImage: UIImage,
-        finalFrame: CGRect
-    ) {
-        self.originFrame = originFrame
-        self.originView = originView
-        self.photoImage = photoImage
-        self.finalFrame = finalFrame
-    }
 }

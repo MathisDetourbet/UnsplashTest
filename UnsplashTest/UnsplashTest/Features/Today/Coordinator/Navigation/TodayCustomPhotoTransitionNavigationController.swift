@@ -21,9 +21,7 @@ final class TodayCustomPhotoTransitionNavigationController: NSObject, UINavigati
         to toVC: UIViewController
     ) -> UIViewControllerAnimatedTransitioning? {
         if operation == .push {
-            return TodayCustomPhotoAnimationController(
-                transitionModel: self.transitionModel
-            )
+            return TodayCustomPhotoAnimationController(transitionModel: self.transitionModel)
         } else {
             return nil
         }

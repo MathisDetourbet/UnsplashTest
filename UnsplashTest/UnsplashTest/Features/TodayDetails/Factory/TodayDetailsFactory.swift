@@ -15,16 +15,14 @@ protocol TodayDetailsFactoryProtocol {
 
 final class TodayDetailsFactory: TodayDetailsFactoryProtocol {
     private let todayDetailsDependencies: TodayDetailsDependencies
-    private let username: String
-    private let photoId: String
+    private let photoViewModel: PhotoViewModel
     private weak var coordinatorDelegate: TodayDetailsCoordinatorDelegate?
 
     init(
         todayDetailsDependencies: TodayDetailsDependencies,
         coordinatorDelegate: TodayDetailsCoordinatorDelegate
     ) {
-        self.username = todayDetailsDependencies.username
-        self.photoId = todayDetailsDependencies.photoId
+        self.photoViewModel = todayDetailsDependencies.photoViewModel
         self.todayDetailsDependencies = todayDetailsDependencies
         self.coordinatorDelegate = coordinatorDelegate
     }
@@ -39,8 +37,7 @@ final class TodayDetailsFactory: TodayDetailsFactoryProtocol {
             repository: self.todayDetailsDependencies.userPhotosRepository
         )
         let input = TodayDetailsViewModelInput(
-            username: self.username,
-            photoId: self.photoId,
+            photoViewModel: self.photoViewModel,
             viewEventPublisher: viewEventPublisher,
             fetchPhotoStatisticsUseCase: fetchPhotoStatisticsUseCase,
             fetchUserPhotosUseCase: fetchUserPhotosUseCase,
