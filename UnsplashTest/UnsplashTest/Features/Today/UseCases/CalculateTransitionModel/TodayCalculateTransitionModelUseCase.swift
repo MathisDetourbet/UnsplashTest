@@ -31,9 +31,10 @@ struct TodayCalculateTransitionModelUseCase: TodayCalculateTransitionModelUseCas
     }
 
     func execute() -> TodayCustomTransitionModel? {
-        if let selectedCell = collectionView.cellForItem(at: indexPath) as? PhotoCollectionViewCell {
+        if let selectedCell = self.collectionView.cellForItem(at: indexPath) as? PhotoCollectionViewCell {
             let photoImage = selectedCell.backgroundImage ?? UIImage()
-            let cellFrame = collectionView.layoutAttributesForItem(at: indexPath)?.frame ?? .zero
+            let collectionViewCellFrame = self.collectionView.layoutAttributesForItem(at: indexPath)?.frame ?? .zero
+            let containerViewCellFrame = self.containerView.convert(collectionViewCellFrame, from: self.collectionView)
 
             let margins = TodayDetailsViewController.CollectionViewLayoutProperties.collectionViewMargins
             let additionnalTopInset = UIDevice.hasNotch ? self.containerView.safeAreaInsets.top : 0.0
@@ -42,7 +43,7 @@ struct TodayCalculateTransitionModelUseCase: TodayCalculateTransitionModelUseCas
             let finalCellFrame = CGRect(origin: finalCellPoint, size: finalCellSize)
 
             return .init(
-                originalCellFrame: cellFrame,
+                originalCellFrame: containerViewCellFrame,
                 finalCellFrame: finalCellFrame,
                 photoImage: photoImage
             )
